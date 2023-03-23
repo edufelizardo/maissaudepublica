@@ -1,0 +1,87 @@
+Entidade Paciente:
+    Nome completo
+    Data de nascimento
+    Endereço
+    Número de telefone
+    CPF
+    Cartão do SUS
+    Histórico médico (diagnósticos, medicamentos prescritos, alergias, vacinas, etc.)
+
+Entidade Funcionário:
+    Nome completo
+    Data de nascimento
+    Endereço
+    Número de telefone
+    CPF
+    Registro profissional (médico, enfermeiro, técnico em enfermagem, etc.)
+    Escala de trabalho
+    Salário
+#####################################################################################################
+Entidade Pessoa:
+    Nome completo
+    Data de nascimento
+    Endereço
+    Número de telefone
+    CPF
+
+Entidade Paciente:
+    Cartão do SUS
+    Histórico médico (diagnósticos, medicamentos prescritos, alergias, vacinas, etc.)
+    Pessoa (chave estrangeira)
+
+Entidade Funcionário:
+    Registro profissional (médico, enfermeiro, técnico em enfermagem, etc.)
+    Escala de trabalho
+    Salário
+
+Entidade Endereço:
+    Logradouro: Nome da rua ou avenida onde o endereço está localizado.
+    Número: Número da residência, edifício ou unidade no endereço.
+    Complemento: Informações adicionais que podem ser necessárias para identificar o local do endereço, como o andar, sala ou apartamento.
+    Bairro: Nome do bairro onde o endereço está localizado.
+    Cidade: Nome da cidade onde o endereço está localizado.
+    Estado: Sigla do estado onde o endereço está localizado.
+    País: Nome do país onde o endereço está localizado.
+    CEP: Código de Endereçamento Postal que identifica o endereço de forma única.
+
+#####################################################################################################
+
+Entidade Pessoa:
+    Atributos:
+        ID (chave primária)
+        Nome completo
+        Data de nascimento
+        Número de telefone
+        CPF
+        Endereço_ID (chave estrangeira referenciando a entidade Endereço)
+    Relacionamentos:
+        Cada registro na entidade Pessoa está associado a um único registro na entidade Endereço por meio da chave estrangeira "Endereço_ID".
+
+Entidade Endereço:
+    Atributos:
+        ID (chave primária)
+        Logradouro
+        Número
+        Complemento
+        Bairro
+        Cidade
+        Estado
+        País
+        CEP
+    Relacionamentos:
+        A entidade Endereço não possui nenhum relacionamento direto com outras entidades.
+
+Entidade Paciente:
+    Atributos:
+        Cartão do SUS
+        Histórico médico (diagnósticos, medicamentos prescritos, alergias, vacinas, etc.)
+        Relacionamento:
+        Pessoa (1 para 1 - composição)
+
+Entidade Funcionário:
+    Atributos:
+        Registro profissional (médico, enfermeiro, técnico em enfermagem, etc.)
+        Escala de trabalho
+        Salário
+        Relacionamento:
+        Pessoa (1 para 1 - composição)
