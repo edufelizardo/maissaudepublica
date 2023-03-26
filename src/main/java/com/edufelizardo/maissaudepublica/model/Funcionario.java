@@ -1,8 +1,6 @@
 package com.edufelizardo.maissaudepublica.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serial;
@@ -10,6 +8,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -21,25 +20,60 @@ public class Funcionario implements Serializable {
     private Long id;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataDeAdmissao;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataDeDemissao;
     private String registroProfissional;
     private BigDecimal salario;
     @OneToOne
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
-//    private EscalaTrabalho escalaTrabalho;
-//    private Formacao formacao;
-//    private Funcao funcao;
-//    private List<ProgramaDeSaude> programaDeSaudes = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "escala_trabalho_id")
+    private EscalaTrabalho escalaTrabalho;
+    @OneToOne
+    @JoinColumn(name = "formacao_id")
+    private Formacao formacao;
+    @OneToOne
+    @JoinColumn(name = "depart_id")
+    private Departamento departamento;
+    @OneToOne
+    @JoinColumn(name = "funcao_id")
+    private Funcao funcao;
+    @OneToMany
+    @JoinColumn(name = "pro_de_saude_id")
+    private List<ProgramaDeSaude> programaDeSaudes = new ArrayList<>();
 
     public Funcionario() {
     }
 
-    public Funcionario(Long id, LocalDate dataDeAdmissao, String registroProfissional, BigDecimal salario, Pessoa pessoa) {
+    public Funcionario(Long id, LocalDate dataDeAdmissao, LocalDate dataDeDemissao, String registroProfissional,
+                       BigDecimal salario, Pessoa pessoa, EscalaTrabalho escalaTrabalho, Formacao formacao,
+                       Departamento departamento, Funcao funcao, List<ProgramaDeSaude> programaDeSaudes) {
         this.id = id;
         this.dataDeAdmissao = dataDeAdmissao;
+        this.dataDeDemissao = dataDeDemissao;
         this.registroProfissional = registroProfissional;
         this.salario = salario;
         this.pessoa = pessoa;
+        this.escalaTrabalho = escalaTrabalho;
+        this.formacao = formacao;
+        this.departamento = departamento;
+        this.funcao = funcao;
+        this.programaDeSaudes = programaDeSaudes;
+    }
+
+    public Funcionario(Funcionario funcionario) {
+        this.id = funcionario.getId();
+        this.dataDeAdmissao = funcionario.getDataDeAdmissao();
+        this.dataDeDemissao = funcionario.getDataDeDemissao();
+        this.registroProfissional = funcionario.getRegistroProfissional();
+        this.salario = funcionario.getSalario();
+        this.pessoa = funcionario.getPessoa();
+        this.escalaTrabalho = funcionario.getEscalaTrabalho();
+        this.formacao = funcionario.getFormacao();
+        this.departamento = funcionario.getDepartamento();
+        this.funcao = funcionario.getFuncao();
+        this.programaDeSaudes = funcionario.getProgramaDeSaudes();
     }
 
     public Long getId() {
@@ -62,6 +96,30 @@ public class Funcionario implements Serializable {
         return pessoa;
     }
 
+    public EscalaTrabalho getEscalaTrabalho() {
+        return escalaTrabalho;
+    }
+
+    public Formacao getFormacao() {
+        return formacao;
+    }
+
+    public Funcao getFuncao() {
+        return funcao;
+    }
+
+    public List<ProgramaDeSaude> getProgramaDeSaudes() {
+        return programaDeSaudes;
+    }
+
+    public LocalDate getDataDeDemissao() {
+        return dataDeDemissao;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
     public void setDataDeAdmissao(LocalDate dataDeAdmissao) {
         this.dataDeAdmissao = dataDeAdmissao;
     }
@@ -82,15 +140,49 @@ public class Funcionario implements Serializable {
         this.pessoa = pessoa;
     }
 
+    public void setEscalaTrabalho(EscalaTrabalho escalaTrabalho) {
+        this.escalaTrabalho = escalaTrabalho;
+    }
+
+    public void setFormacao(Formacao formacao) {
+        this.formacao = formacao;
+    }
+
+    public void setFuncao(Funcao funcao) {
+        this.funcao = funcao;
+    }
+
+    public void setProgramaDeSaudes(List<ProgramaDeSaude> programaDeSaudes) {
+        this.programaDeSaudes = programaDeSaudes;
+    }
+
+    public void setDataDeDemissao(LocalDate dataDeDemissao) {
+        this.dataDeDemissao = dataDeDemissao;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Funcionario that)) return false;
-        return Objects.equals(getId(), that.getId());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getDataDeAdmissao(),
+                that.getDataDeAdmissao()) && Objects.equals(getDataDeDemissao(),
+                that.getDataDeDemissao()) && Objects.equals(getRegistroProfissional(),
+                that.getRegistroProfissional()) && Objects.equals(getSalario(),
+                that.getSalario()) && Objects.equals(getPessoa(),
+                that.getPessoa()) && Objects.equals(getEscalaTrabalho(),
+                that.getEscalaTrabalho()) && Objects.equals(getFormacao(),
+                that.getFormacao()) && Objects.equals(getDepartamento(),
+                that.getDepartamento()) && Objects.equals(getFuncao(),
+                that.getFuncao()) && Objects.equals(getProgramaDeSaudes(), that.getProgramaDeSaudes());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(getId(), getDataDeAdmissao(), getDataDeDemissao(), getRegistroProfissional(), getSalario(),
+                getPessoa(), getEscalaTrabalho(), getFormacao(), getDepartamento(), getFuncao(), getProgramaDeSaudes());
     }
 }

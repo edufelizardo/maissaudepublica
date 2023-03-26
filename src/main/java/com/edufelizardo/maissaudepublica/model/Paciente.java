@@ -20,15 +20,26 @@ public class Paciente implements Serializable {
     @OneToOne
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
+    @OneToOne
+    @JoinColumn(name = "pessoa_da_familia_id")
+    private Familia familia;
 
     public Paciente() {
     }
 
-    public Paciente(Long id, String cartaoDoSUS, String historicoMedico, Pessoa pessoa) {
+    public Paciente(Long id, String cartaoDoSUS, String historicoMedico, Pessoa pessoa, Familia familia) {
         this.id = id;
         this.cartaoDoSUS = cartaoDoSUS;
         this.historicoMedico = historicoMedico;
         this.pessoa = pessoa;
+        this.familia = familia;
+    }
+    public Paciente(Paciente paciente) {
+        this.id = paciente.getId();
+        this.cartaoDoSUS = paciente.getCartaoDoSUS();
+        this.historicoMedico = paciente.getHistoricoMedico();
+        this.pessoa = paciente.getPessoa();
+        this.familia = paciente.getFamilia();
     }
 
     public Long getId() {
@@ -47,6 +58,10 @@ public class Paciente implements Serializable {
         return pessoa;
     }
 
+    public Familia getFamilia() {
+        return familia;
+    }
+
     public void setCartaoDoSUS(String cartaoDoSUS) {
         this.cartaoDoSUS = cartaoDoSUS;
     }
@@ -59,15 +74,26 @@ public class Paciente implements Serializable {
         this.pessoa = pessoa;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setFamilia(Familia familia) {
+        this.familia = familia;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Paciente paciente)) return false;
-        return Objects.equals(getId(), paciente.getId());
+        return Objects.equals(getId(), paciente.getId()) && Objects.equals(getCartaoDoSUS(),
+                paciente.getCartaoDoSUS()) && Objects.equals(getHistoricoMedico(),
+                paciente.getHistoricoMedico()) && Objects.equals(getPessoa(),
+                paciente.getPessoa()) && Objects.equals(getFamilia(), paciente.getFamilia());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(getId(), getCartaoDoSUS(), getHistoricoMedico(), getPessoa(), getFamilia());
     }
 }
