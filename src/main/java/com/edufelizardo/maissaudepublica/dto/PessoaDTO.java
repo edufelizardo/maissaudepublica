@@ -1,44 +1,60 @@
-package com.edufelizardo.maissaudepublica.model;
+package com.edufelizardo.maissaudepublica.dto;
 
-import jakarta.persistence.*;
-import org.springframework.data.annotation.Transient;
+import com.edufelizardo.maissaudepublica.model.Pessoa;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
-@Entity
-public class Pessoa implements Serializable {
-    @Serial
-    private static final long serialVersionUID = -8935505190460053136L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nomeCompleto;
-    private LocalDate dataDeNascimento;
-    @Transient
-    private int idade;
-    private String cpf;
-    private String email;
-    @ElementCollection
-    @CollectionTable(name = "telefones")
-    private Set<String> telefones = new HashSet<>();
-    @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Endereco endereco;
 
-    public Pessoa() {
+public class PessoaDTO implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -631854973249151243L;
+    private Long id;
+    @NotBlank(message = "O nome deve ser preenchido.")
+    private String nomeCompleto;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataDeNascimento;
+    private int idade;
+    @CPF(message = "Deve ser informado um CPF valido")
+    private String cpf;
+    @Email(message = "O E-Mail deve ser preenchido no formato específico.")
+    private String email;
+    @Pattern(regexp = "^\\([1-9]{2}\\) 9?[6-9][0-9]{3}\\-[0-9]{4}$",
+            message = "Telefone celular inválido")
+    private Set<String> telefones = new HashSet<>();
+    private EnderecoDTO endereco;
+
+    public PessoaDTO() {
     }
 
-    public Pessoa(Long id, String nomeCompleto, LocalDate dataDeNascimento, String cpf, String email, Endereco endereco) {
+    public PessoaDTO(Long id, String nomeCompleto, LocalDate dataDeNascimento, int idade, String cpf,
+                     String email, Set<String> telefones, EnderecoDTO endereco) {
         this.id = id;
         this.nomeCompleto = nomeCompleto;
         this.dataDeNascimento = dataDeNascimento;
+        this.idade = idade;
         this.cpf = cpf;
         this.email = email;
+        this.telefones = telefones;
         this.endereco = endereco;
+    }
+
+    public PessoaDTO(Pessoa pessoa) {
+        this.id = pessoa.getId();
+        this.nomeCompleto = pessoa.getNomeCompleto();
+        this.dataDeNascimento = pessoa.getDataDeNascimento();
+        this.idade = pessoa.getIdade();
+        this.cpf = pessoa.getCpf();
+        this.telefones = pessoa.getTelefones();
+        this.email = pessoa.getEmail();
+        this.endereco = new EnderecoDTO(pessoa.getEndereco());
     }
 
     public Long getId() {
@@ -69,7 +85,7 @@ public class Pessoa implements Serializable {
         return telefones;
     }
 
-    public Endereco getEndereco() {
+    public EnderecoDTO getEndereco() {
         return endereco;
     }
 
@@ -101,19 +117,7 @@ public class Pessoa implements Serializable {
         this.telefones = telefones;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEndereco(EnderecoDTO endereco) {
         this.endereco = endereco;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Pessoa pessoa)) return false;
-        return Objects.equals(getId(), pessoa.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
     }
 }

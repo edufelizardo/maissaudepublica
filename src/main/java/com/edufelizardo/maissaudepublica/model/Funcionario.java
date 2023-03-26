@@ -74,6 +74,14 @@ public class Funcionario implements Serializable {
         this.salario = salario;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

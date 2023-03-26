@@ -15,7 +15,6 @@ public class Paciente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "Não pode ser repetido e deve ser preenchido com valor valido")
     private String cartaoDoSUS;
     private String historicoMedico; // ver como vai fazer com isso
     @OneToOne
