@@ -15,7 +15,6 @@ public class Familia implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long familia_id;
     private boolean area;
-    @NotBlank(message = "O número da família deve ser informado obrigatóriamente.")
     private int numaroFamilia;
     private boolean resposavelFamilia;
     @OneToOne

@@ -34,18 +34,6 @@ public class PessoaDTO implements Serializable {
     public PessoaDTO() {
     }
 
-    public PessoaDTO(Long id, String nomeCompleto, LocalDate dataDeNascimento, int idade, String cpf,
-                     String email, Set<String> telefones, EnderecoDTO endereco) {
-        this.id = id;
-        this.nomeCompleto = nomeCompleto;
-        this.dataDeNascimento = dataDeNascimento;
-        this.idade = idade;
-        this.cpf = cpf;
-        this.email = email;
-        this.telefones = telefones;
-        this.endereco = endereco;
-    }
-
     public PessoaDTO(Pessoa pessoa) {
         this.id = pessoa.getId();
         this.nomeCompleto = pessoa.getNomeCompleto();

@@ -38,7 +38,7 @@ public class Consulta implements Serializable {
     @Column(columnDefinition = "MEDIUMTEXT")
     private String orientacoesClinicas;
     @OneToOne
-    @JoinColumn(name = "consulta_prescricao_medica")
+    @JoinColumn(name = "consulta_prescricao_medica_id")
     private PrescricaoMedica prescricaoMedica;
     @OneToMany
     @JoinColumn(name = "consulta_exames_id")

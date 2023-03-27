@@ -15,7 +15,6 @@ public class AreaDeCobertura implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long area_id;
-    @NotBlank(message = "A área deve ser preenchida.")
     private int area;
     @OneToMany
     @JoinColumn(name = "area_microarea_id")

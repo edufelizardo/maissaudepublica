@@ -1,6 +1,9 @@
 package com.edufelizardo.maissaudepublica.dto;
 
+import com.edufelizardo.maissaudepublica.model.AreaDeCobertura;
+import com.edufelizardo.maissaudepublica.model.Familia;
 import com.edufelizardo.maissaudepublica.model.Paciente;
+import com.edufelizardo.maissaudepublica.model.Prontuario;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
@@ -17,19 +20,23 @@ public class PacienteDTO implements Serializable {
             message = "Digitar um formato valido para CNS")
     @NotBlank(message = "O CNS deve ser preenchido.")
     private String cartaoDoSUS;
-    private String historicoMedico; // ver como vai fazer com isso
-    @OneToOne
-    @JoinColumn(name = "pessoa_id")
+    private int posicaoMembro;
+    private Prontuario prontuario;
     private PessoaDTO pessoa;
+    private FamiliaDTO familiaDTO;
+    private AreaDeCoberturaDTO areaDeCoberturaDTO;
 
     public PacienteDTO() {
     }
 
-    public PacienteDTO(Long id, String cartaoDoSUS, String historicoMedico, PessoaDTO pessoa) {
-        this.id = id;
-        this.cartaoDoSUS = cartaoDoSUS;
-        this.historicoMedico = historicoMedico;
-        this.pessoa = pessoa;
+    public PacienteDTO(PacienteDTO dto) {
+        this.id = dto.getId();
+        this.cartaoDoSUS = dto.getCartaoDoSUS();
+        this.posicaoMembro = dto.getPosicaoMembro();
+        this.prontuario = dto.getProntuario();
+        this.pessoa = dto.getPessoa();
+        this.familiaDTO = dto.getFamiliaDTO();
+        this.areaDeCoberturaDTO = dto.getAreaDeCoberturaDTO();
     }
 
     public Long getId() {
@@ -40,23 +47,51 @@ public class PacienteDTO implements Serializable {
         return cartaoDoSUS;
     }
 
-    public String getHistoricoMedico() {
-        return historicoMedico;
+    public int getPosicaoMembro() {
+        return posicaoMembro;
+    }
+
+    public Prontuario getProntuario() {
+        return prontuario;
     }
 
     public PessoaDTO getPessoa() {
         return pessoa;
     }
 
+    public FamiliaDTO getFamiliaDTO() {
+        return familiaDTO;
+    }
+
+    public AreaDeCoberturaDTO getAreaDeCoberturaDTO() {
+        return areaDeCoberturaDTO;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setCartaoDoSUS(String cartaoDoSUS) {
         this.cartaoDoSUS = cartaoDoSUS;
     }
 
-    public void setHistoricoMedico(String historicoMedico) {
-        this.historicoMedico = historicoMedico;
-    }
-
     public void setPessoa(PessoaDTO pessoa) {
         this.pessoa = pessoa;
+    }
+
+    public void setPosicaoMembro(int posicaoMembro) {
+        this.posicaoMembro = posicaoMembro;
+    }
+
+    public void setProntuario(Prontuario prontuario) {
+        this.prontuario = prontuario;
+    }
+
+    public void setFamiliaDTO(FamiliaDTO familiaDTO) {
+        this.familiaDTO = familiaDTO;
+    }
+
+    public void setAreaDeCoberturaDTO(AreaDeCoberturaDTO areaDeCoberturaDTO) {
+        this.areaDeCoberturaDTO = areaDeCoberturaDTO;
     }
 }

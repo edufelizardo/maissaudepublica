@@ -1,7 +1,6 @@
 package com.edufelizardo.maissaudepublica.model;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Transient;
 
 import java.io.Serial;
 import java.io.Serializable;

@@ -18,9 +18,7 @@ public class Funcionario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataDeAdmissao;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataDeDemissao;
     private String registroProfissional;
     private BigDecimal salario;

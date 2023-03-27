@@ -32,18 +32,7 @@ public class EnderecoDTO implements Serializable {
 
     public EnderecoDTO() {
     }
-
-    public EnderecoDTO(Long id, String cep, String logradouro, int numero, String complemento, String bairro,
-                       String localidade, String uf) {
-        this.id = id;
-        this.cep = cep;
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.complemento = complemento;
-        this.bairro = bairro;
-        this.localidade = localidade;
-        this.uf = uf;
-    }public EnderecoDTO(Endereco endereco) {
+    public EnderecoDTO(Endereco endereco) {
         this.id = endereco.getId();
         this.cep = endereco.getCep();
         this.logradouro = endereco.getLogradouro();
