@@ -31,12 +31,6 @@ public class PacienteDTO implements Serializable {
         this.historicoMedico = historicoMedico;
         this.pessoa = pessoa;
     }
-    public PacienteDTO(Paciente paciente) {
-        this.id = paciente.getId();
-        this.cartaoDoSUS = paciente.getCartaoDoSUS();
-        this.historicoMedico = paciente.getHistoricoMedico();
-        this.pessoa = new PessoaDTO(paciente.getPessoa());
-    }
 
     public Long getId() {
         return id;

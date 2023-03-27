@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
+@Entity
 public class UnidadeDeSaude implements Serializable {
     @Serial
     private static final long serialVersionUID = -2204382685411159343L;

@@ -1,13 +1,10 @@
 package com.edufelizardo.maissaudepublica.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.CreditCardNumber;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.stream.Stream;
 @Entity
 public class Paciente implements Serializable {
     @Serial
@@ -16,30 +13,42 @@ public class Paciente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String cartaoDoSUS;
-    private String historicoMedico; // ver como vai fazer com isso
+    private int posicaoMembro;
+    @OneToOne
+    @JoinColumn(name = "paciente_prontuario_id")
+    private Prontuario prontuario;
     @OneToOne
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
     @OneToOne
     @JoinColumn(name = "pessoa_da_familia_id")
     private Familia familia;
+    @OneToOne
+    @JoinColumn(name = "paciente_area_id")
+    private AreaDeCobertura areaDeCobertura;
 
     public Paciente() {
     }
 
-    public Paciente(Long id, String cartaoDoSUS, String historicoMedico, Pessoa pessoa, Familia familia) {
+    public Paciente(Long id, String cartaoDoSUS, int posicaoMembro, Prontuario prontuario, Pessoa pessoa,
+                    Familia familia, AreaDeCobertura areaDeCobertura) {
         this.id = id;
         this.cartaoDoSUS = cartaoDoSUS;
-        this.historicoMedico = historicoMedico;
+        this.posicaoMembro = posicaoMembro;
+        this.prontuario = prontuario;
         this.pessoa = pessoa;
         this.familia = familia;
+        this.areaDeCobertura = areaDeCobertura;
     }
+
     public Paciente(Paciente paciente) {
         this.id = paciente.getId();
         this.cartaoDoSUS = paciente.getCartaoDoSUS();
-        this.historicoMedico = paciente.getHistoricoMedico();
+        this.posicaoMembro = paciente.getPosicaoMembro();
+        this.prontuario = paciente.getProntuario();
         this.pessoa = paciente.getPessoa();
         this.familia = paciente.getFamilia();
+        this.areaDeCobertura = paciente.getAreaDeCobertura();
     }
 
     public Long getId() {
@@ -50,8 +59,12 @@ public class Paciente implements Serializable {
         return cartaoDoSUS;
     }
 
-    public String getHistoricoMedico() {
-        return historicoMedico;
+    public int getPosicaoMembro() {
+        return posicaoMembro;
+    }
+
+    public Prontuario getProntuario() {
+        return prontuario;
     }
 
     public Pessoa getPessoa() {
@@ -62,12 +75,20 @@ public class Paciente implements Serializable {
         return familia;
     }
 
+    public AreaDeCobertura getAreaDeCobertura() {
+        return areaDeCobertura;
+    }
+
     public void setCartaoDoSUS(String cartaoDoSUS) {
         this.cartaoDoSUS = cartaoDoSUS;
     }
 
-    public void setHistoricoMedico(String historicoMedico) {
-        this.historicoMedico = historicoMedico;
+    public void setPosicaoMembro(int posicaoMembro) {
+        this.posicaoMembro = posicaoMembro;
+    }
+
+    public void setProntuario(Prontuario prontuario) {
+        this.prontuario = prontuario;
     }
 
     public void setPessoa(Pessoa pessoa) {
@@ -82,18 +103,24 @@ public class Paciente implements Serializable {
         this.familia = familia;
     }
 
+    public void setAreaDeCobertura(AreaDeCobertura areaDeCobertura) {
+        this.areaDeCobertura = areaDeCobertura;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Paciente paciente)) return false;
-        return Objects.equals(getId(), paciente.getId()) && Objects.equals(getCartaoDoSUS(),
-                paciente.getCartaoDoSUS()) && Objects.equals(getHistoricoMedico(),
-                paciente.getHistoricoMedico()) && Objects.equals(getPessoa(),
-                paciente.getPessoa()) && Objects.equals(getFamilia(), paciente.getFamilia());
+        return getPosicaoMembro() == paciente.getPosicaoMembro() && Objects.equals(getId(),
+                paciente.getId()) && Objects.equals(getCartaoDoSUS(),
+                paciente.getCartaoDoSUS()) && Objects.equals(getProntuario(),
+                paciente.getProntuario()) && Objects.equals(getPessoa(),
+                paciente.getPessoa()) && Objects.equals(getFamilia(),
+                paciente.getFamilia()) && Objects.equals(getAreaDeCobertura(), paciente.getAreaDeCobertura());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getCartaoDoSUS(), getHistoricoMedico(), getPessoa(), getFamilia());
+        return Objects.hash(getId(), getCartaoDoSUS(), getPosicaoMembro(), getProntuario(), getPessoa(), getFamilia(), getAreaDeCobertura());
     }
 }

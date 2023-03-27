@@ -1,12 +1,19 @@
 package com.edufelizardo.maissaudepublica.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
-
+@Entity
 public class EquipamentoDeSaude implements Serializable {
     @Serial
     private static final long serialVersionUID = 3088686415806535954L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long equipamentodeSaude_id;
     private String nomeDoEquipamento;
 
