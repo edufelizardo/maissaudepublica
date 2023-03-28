@@ -1,7 +1,6 @@
 package com.edufelizardo.maissaudepublica.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serial;
 import java.io.Serializable;

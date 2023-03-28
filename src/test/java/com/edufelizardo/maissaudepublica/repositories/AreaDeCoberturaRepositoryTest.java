@@ -2,7 +2,7 @@ package com.edufelizardo.maissaudepublica.repositories;
 
 import com.edufelizardo.maissaudepublica.model.AreaDeCobertura;
 import com.edufelizardo.maissaudepublica.model.Subarea;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @DataJpaTest
 @DisplayName("Área de Cobertura de Atendimento das Equipes")
