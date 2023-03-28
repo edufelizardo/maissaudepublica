@@ -17,7 +17,7 @@ public class Subarea implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long subarea_id;
-    @NotBlank(message = "A microarea deve ser preenchida.")
+//    @NotBlank(message = "A microarea deve ser preenchida.")
     private int subarea;
 
     public Subarea() {
@@ -58,5 +58,13 @@ public class Subarea implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(getSubarea_id(), getSubarea());
+    }
+
+    @Override
+    public String toString() {
+        return "Subarea{" +
+                "subarea_id=" + subarea_id +
+                ", subarea=" + subarea +
+                '}' + "\n";
     }
 }

@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +19,7 @@ public class AreaDeCobertura implements Serializable {
     private int area;
     @OneToMany
     @JoinColumn(name = "area_microarea_id")
-    private List<Subarea> subareas;
+    private List<Subarea> subareas = new ArrayList<>();
 
     public AreaDeCobertura() {
     }
@@ -70,5 +71,14 @@ public class AreaDeCobertura implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(getArea_id(), getArea(), getSubareas());
+    }
+
+    @Override
+    public String toString() {
+        return "Area de Cobertura das Unidades de Saúde{" +
+                "area_id=" + area_id +
+                ", area=" + area +
+                ", subareas=" + subareas +
+                '}' + "\n";
     }
 }
