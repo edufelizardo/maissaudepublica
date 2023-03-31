@@ -140,4 +140,18 @@ public class Exame implements Serializable {
         return Objects.hash(getExame_id(), getTipoDoExame(), getDataExame(), getResultado(), getFuncionario(),
                 getUnidadeDeSaude(), getCustos(), getStatusExame());
     }
+
+    @Override
+    public String toString() {
+        return "Exame{" +
+                "exame_id=" + exame_id +
+                ", tipoDoExame=" + tipoDoExame +
+                ", dataExame=" + dataExame +
+                ", resultado='" + resultado + '\'' +
+                ", funcionario=" + funcionario +
+                ", unidadeDeSaude=" + unidadeDeSaude +
+                ", custos=" + custos +
+                ", statusExame=" + statusExame +
+                '}';
+    }
 }

@@ -108,4 +108,16 @@ public class Tratamento implements Serializable {
         return Objects.hash(getTramento_id(), getDatadDeInicio(), getDataDeTermino(), getDescricao(), getStatus(),
                 getResultado());
     }
+
+    @Override
+    public String toString() {
+        return "Tratamento{" +
+                "tramento_id=" + tramento_id +
+                ", datadDeInicio=" + datadDeInicio +
+                ", dataDeTermino=" + dataDeTermino +
+                ", descricao='" + descricao + '\'' +
+                ", status=" + status +
+                ", resultado='" + resultado + '\'' +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package com.edufelizardo.maissaudepublica.dto;
 
+import com.edufelizardo.maissaudepublica.model.Encaminhamento;
 import com.edufelizardo.maissaudepublica.model.enuns.EspecialidadeMedica;
 import com.edufelizardo.maissaudepublica.model.enuns.StatusTratamento;
 
@@ -20,13 +21,13 @@ public class EncaminhamentoDTO implements Serializable {
     public EncaminhamentoDTO() {
     }
 
-    public EncaminhamentoDTO(EncaminhamentoDTO dto) {
-        this.encaminhamento_id = dto.getEncaminhamento_id();
-        this.dataDoEncaminhamento = dto.getDataDoEncaminhamento();
-        this.motivoDoEncaminhamento = dto.getMotivoDoEncaminhamento();
-        this.especialidadeMedica = dto.getEspecialidadeMedica();
-        this.observacoes = dto.getObservacoes();
-        this.statusTratamento = dto.getStatusTratamento();
+    public EncaminhamentoDTO(Encaminhamento encaminhamento) {
+        this.encaminhamento_id = encaminhamento.getEncaminhamento_id();
+        this.dataDoEncaminhamento = encaminhamento.getDataDoEncaminhamento();
+        this.motivoDoEncaminhamento = encaminhamento.getMotivoDoEncaminhamento();
+        this.especialidadeMedica = encaminhamento.getEspecialidadeMedica();
+        this.observacoes = encaminhamento.getObservacoes();
+        this.statusTratamento = encaminhamento.getStatusTratamento();
     }
 
     public Long getEncaminhamento_id() {

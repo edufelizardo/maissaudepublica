@@ -149,4 +149,22 @@ public class Endereco implements Serializable {
     public int hashCode() {
         return Objects.hash(getId());
     }
+
+    @Override
+    public String toString() {
+        return "Endereco{" +
+                "id=" + id +
+                ", cep='" + cep + '\'' +
+                ", logradouro='" + logradouro + '\'' +
+                ", numero=" + numero +
+                ", complemento='" + complemento + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", localidade='" + localidade + '\'' +
+                ", uf='" + uf + '\'' +
+                ", ibge='" + ibge + '\'' +
+                ", gia='" + gia + '\'' +
+                ", ddd='" + ddd + '\'' +
+                ", siafi='" + siafi + '\'' +
+                '}';
+    }
 }

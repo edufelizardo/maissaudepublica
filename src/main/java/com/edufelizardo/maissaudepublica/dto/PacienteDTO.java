@@ -29,14 +29,14 @@ public class PacienteDTO implements Serializable {
     public PacienteDTO() {
     }
 
-    public PacienteDTO(PacienteDTO dto) {
-        this.id = dto.getId();
-        this.cartaoDoSUS = dto.getCartaoDoSUS();
-        this.posicaoMembro = dto.getPosicaoMembro();
-        this.prontuario = dto.getProntuario();
-        this.pessoa = dto.getPessoa();
-        this.familiaDTO = dto.getFamiliaDTO();
-        this.areaDeCoberturaDTO = dto.getAreaDeCoberturaDTO();
+    public PacienteDTO(Paciente paciente) {
+        this.id = paciente.getId();
+        this.cartaoDoSUS = paciente.getCartaoDoSUS();
+        this.posicaoMembro = paciente.getPosicaoMembro();
+        this.prontuario = paciente.getProntuario();
+        this.pessoa = new PessoaDTO(paciente.getPessoa());
+        this.familiaDTO = new FamiliaDTO(paciente.getFamilia());
+        this.areaDeCoberturaDTO = new AreaDeCoberturaDTO(paciente.getAreaDeCobertura());
     }
 
     public Long getId() {

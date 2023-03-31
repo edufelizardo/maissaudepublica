@@ -59,4 +59,12 @@ public class Formacao implements Serializable {
     public int hashCode() {
         return Objects.hash(getNomeDaFormacao_id(), getNomeFormacao());
     }
+
+    @Override
+    public String toString() {
+        return "Formacao{" +
+                "nomeDaFormacao_id=" + nomeDaFormacao_id +
+                ", nomeFormacao='" + nomeFormacao + '\'' +
+                '}';
+    }
 }

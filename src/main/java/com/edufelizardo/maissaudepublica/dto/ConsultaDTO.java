@@ -9,16 +9,18 @@ import jakarta.persistence.OneToOne;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConsultaDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = -981777308266600971L;
     private Long consulta_id;
     private LocalDate dataConsulta;
-    private LocalDate horarioConsulta;
-    private List<FuncionarioDTO> funcionariosDtos;
+    private LocalTime horarioConsulta;
+    private List<FuncionarioDTO> funcionariosDtos = new ArrayList<>();
     private PacienteDTO pacienteDTO;
     private ExameFisicoDTO exameFisicoDTO;
     private String queixa;
@@ -32,20 +34,31 @@ public class ConsultaDTO implements Serializable {
     public ConsultaDTO() {
     }
 
-    public ConsultaDTO(ConsultaDTO dto) {
-        this.consulta_id = dto.getConsulta_id();
-        this.dataConsulta = dto.getDataConsulta();
-        this.horarioConsulta = dto.getHorarioConsulta();
-        this.funcionariosDtos = dto.getFuncionariosDtos();
-        this.pacienteDTO = dto.getPacienteDTO();
-        this.exameFisicoDTO = dto.getExameFisicoDTO();
-        this.queixa = dto.getQueixa();
-        this.diagnosticosDtos = dto.getDiagnosticosDtos();
-        this.tratamentoDTO = dto.getTratamentoDTO();
-        this.orientacoesClinicas = dto.getOrientacoesClinicas();
-        this.prescricaoMedicaDTO = dto.getPrescricaoMedicaDTO();
-        this.examesDtos = dto.getExamesDtos();
-        this.encaminhamentoDTOS = dto.getEncaminhamentoDTOS();
+    public ConsultaDTO(Consulta consulta) {
+        this.consulta_id = consulta.getConsulta_id();
+        this.dataConsulta = consulta.getDataConsulta();
+        this.horarioConsulta = consulta.getHorarioConsulta();
+        this.funcionariosDtos = consulta.getFuncionarios().
+                stream()
+                .map(FuncionarioDTO::new)
+                .collect(Collectors.toList());
+        this.pacienteDTO = new PacienteDTO(consulta.getPaciente());
+        this.exameFisicoDTO = new ExameFisicoDTO(consulta.getExameFisico());
+        this.queixa = consulta.getQueixa();
+        this.diagnosticosDtos = consulta.getDiagnosticos()
+                .stream()
+                .map(DiagnosticoDTO::new)
+                .collect(Collectors.toList());
+        this.tratamentoDTO = new TratamentoDTO(consulta.getTratamento());
+        this.orientacoesClinicas = consulta.getOrientacoesClinicas();
+        this.prescricaoMedicaDTO = new PrescricaoMedicaDTO(consulta.getPrescricaoMedica());
+        this.examesDtos = consulta.getExames()
+                .stream()
+                .map(ExameDTO::new)
+                .collect(Collectors.toList());
+        this.encaminhamentoDTOS = consulta.getEncaminhamentos()
+                .stream().map(EncaminhamentoDTO::new)
+                .collect(Collectors.toList());
     }
 
     public Long getConsulta_id() {
@@ -56,7 +69,7 @@ public class ConsultaDTO implements Serializable {
         return dataConsulta;
     }
 
-    public LocalDate getHorarioConsulta() {
+    public LocalTime getHorarioConsulta() {
         return horarioConsulta;
     }
 
@@ -108,7 +121,7 @@ public class ConsultaDTO implements Serializable {
         this.dataConsulta = dataConsulta;
     }
 
-    public void setHorarioConsulta(LocalDate horarioConsulta) {
+    public void setHorarioConsulta(LocalTime horarioConsulta) {
         this.horarioConsulta = horarioConsulta;
     }
 

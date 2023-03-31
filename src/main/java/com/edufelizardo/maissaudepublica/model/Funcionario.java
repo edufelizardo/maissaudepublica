@@ -183,4 +183,21 @@ public class Funcionario implements Serializable {
         return Objects.hash(getId(), getDataDeAdmissao(), getDataDeDemissao(), getRegistroProfissional(), getSalario(),
                 getPessoa(), getEscalaTrabalho(), getFormacao(), getDepartamento(), getFuncao(), getProgramaDeSaudes());
     }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "id=" + id +
+                ", dataDeAdmissao=" + dataDeAdmissao +
+                ", dataDeDemissao=" + dataDeDemissao +
+                ", registroProfissional='" + registroProfissional + '\'' +
+                ", salario=" + salario +
+                ", pessoa=" + pessoa +
+                ", escalaTrabalho=" + escalaTrabalho +
+                ", formacao=" + formacao +
+                ", departamento=" + departamento +
+                ", funcao=" + funcao +
+                ", programaDeSaudes=" + programaDeSaudes +
+                '}';
+    }
 }

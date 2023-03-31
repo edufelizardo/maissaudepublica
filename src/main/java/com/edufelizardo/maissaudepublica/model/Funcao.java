@@ -59,4 +59,12 @@ public class Funcao implements Serializable {
     public int hashCode() {
         return Objects.hash(getNomeFuncao_id(), getNomeFuncao());
     }
+
+    @Override
+    public String toString() {
+        return "Funcao{" +
+                "nomeFuncao_id=" + nomeFuncao_id +
+                ", nomeFuncao='" + nomeFuncao + '\'' +
+                '}';
+    }
 }

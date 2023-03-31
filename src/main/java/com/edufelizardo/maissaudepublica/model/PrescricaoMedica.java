@@ -96,4 +96,15 @@ public class PrescricaoMedica implements Serializable {
         return Objects.hash(getPrescricaoMedica_id(), getDataDaPrescricao(), getMedicamentos(), getOrientacoes(),
                 getPeriodo());
     }
+
+    @Override
+    public String toString() {
+        return "PrescricaoMedica{" +
+                "prescricaoMedica_id=" + prescricaoMedica_id +
+                ", dataDaPrescricao=" + dataDaPrescricao +
+                ", medicamentos=" + medicamentos +
+                ", orientacoes='" + orientacoes + '\'' +
+                ", periodo='" + periodo + '\'' +
+                '}';
+    }
 }

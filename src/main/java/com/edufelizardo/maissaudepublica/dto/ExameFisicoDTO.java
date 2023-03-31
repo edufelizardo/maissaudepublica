@@ -1,5 +1,6 @@
 package com.edufelizardo.maissaudepublica.dto;
 
+import com.edufelizardo.maissaudepublica.model.ExameFisico;
 import com.edufelizardo.maissaudepublica.model.enuns.CID;
 import jakarta.persistence.Column;
 
@@ -30,16 +31,16 @@ public class ExameFisicoDTO implements Serializable{
     public ExameFisicoDTO() {
     }
 
-    public ExameFisicoDTO(ExameFisicoDTO dto) {
-        this.exameFisico_id = dto.getExameFisico_id();
-        this.data = dto.getData();
-        this.peso = dto.getPeso();
-        this.altura = dto.getAltura();
-        this.pressaoArterialSistolica = dto.getPressaoArterialSistolica();
-        this.pressaoArterialDiastolica = dto.getPressaoArterialDiastolica();
-        this.temperatura = dto.getTemperatura();
-        this.frequenciaCardiaca = dto.getFrequenciaCardiaca();
-        this.frequenciaRespiratoria = dto.getFrequenciaRespiratoria();
+    public ExameFisicoDTO(ExameFisico fisico) {
+        this.exameFisico_id = fisico.getExameFisico_id();
+        this.data = fisico.getData();
+        this.peso = fisico.getPeso();
+        this.altura = fisico.getAltura();
+        this.pressaoArterialSistolica = fisico.getPressaoArterialSistolica();
+        this.pressaoArterialDiastolica = fisico.getPressaoArterialDiastolica();
+        this.temperatura = fisico.getTemperatura();
+        this.frequenciaCardiaca = fisico.getFrequenciaCardiaca();
+        this.frequenciaRespiratoria = fisico.getFrequenciaRespiratoria();
     }
 
     public Long getExameFisico_id() {

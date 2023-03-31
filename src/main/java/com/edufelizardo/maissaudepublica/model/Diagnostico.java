@@ -68,4 +68,13 @@ public class Diagnostico implements Serializable {
     public int hashCode() {
         return Objects.hash(getDiagnostico_id(), getCid(), getObservacoes());
     }
+
+    @Override
+    public String toString() {
+        return "Diagnostico{" +
+                "diagnostico_id=" + diagnostico_id +
+                ", cid=" + cid +
+                ", observacoes='" + observacoes + '\'' +
+                '}';
+    }
 }

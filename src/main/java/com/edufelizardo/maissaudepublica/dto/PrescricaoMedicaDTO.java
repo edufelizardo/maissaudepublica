@@ -1,11 +1,13 @@
 package com.edufelizardo.maissaudepublica.dto;
 
+import com.edufelizardo.maissaudepublica.model.PrescricaoMedica;
 import jakarta.persistence.Column;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PrescricaoMedicaDTO implements Serializable {
     @Serial
@@ -20,12 +22,12 @@ public class PrescricaoMedicaDTO implements Serializable {
     public PrescricaoMedicaDTO() {
     }
 
-    public PrescricaoMedicaDTO(PrescricaoMedicaDTO dto) {
-        this.prescricaoMedica_id = dto.getPrescricaoMedica_id();
-        this.dataDaPrescricao = dto.getDataDaPrescricao();
-        this.medicamentos = dto.getMedicamentos();
-        this.orientacoes = dto.getOrientacoes();
-        this.periodo = dto.getPeriodo();
+    public PrescricaoMedicaDTO(PrescricaoMedica medica) {
+        this.prescricaoMedica_id = medica.getPrescricaoMedica_id();
+        this.dataDaPrescricao = medica.getDataDaPrescricao();
+        this.medicamentos = medica.getMedicamentos();
+        this.orientacoes = medica.getOrientacoes();
+        this.periodo = medica.getPeriodo();
     }
 
     public Long getPrescricaoMedica_id() {

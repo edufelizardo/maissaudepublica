@@ -1,5 +1,6 @@
 package com.edufelizardo.maissaudepublica.dto;
 
+import com.edufelizardo.maissaudepublica.model.Diagnostico;
 import com.edufelizardo.maissaudepublica.model.enuns.CID;
 
 import java.io.Serial;
@@ -15,10 +16,10 @@ public class DiagnosticoDTO implements Serializable {
     public DiagnosticoDTO() {
     }
 
-    public DiagnosticoDTO(DiagnosticoDTO dto) {
-        this.diagnostico_id = dto.getDiagnostico_id();
-        this.cid = dto.getCid();
-        this.observacoes = dto.getObservacoes();
+    public DiagnosticoDTO(Diagnostico diagnostico) {
+        this.diagnostico_id = diagnostico.getDiagnostico_id();
+        this.cid = diagnostico.getCid();
+        this.observacoes = diagnostico.getObservacoes();
     }
 
     public Long getDiagnostico_id() {

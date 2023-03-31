@@ -109,4 +109,16 @@ public class Familia implements Serializable {
         return Objects.hash(getFamilia_id(), isArea(), getNumaroFamilia(), isResposavelFamilia(),
                 getAreaDeCobertura(), getEquipe());
     }
+
+    @Override
+    public String toString() {
+        return "Familia{" +
+                "familia_id=" + familia_id +
+                ", area=" + area +
+                ", numaroFamilia=" + numaroFamilia +
+                ", resposavelFamilia=" + resposavelFamilia +
+                ", areaDeCobertura=" + areaDeCobertura +
+                ", equipe=" + equipe +
+                '}';
+    }
 }

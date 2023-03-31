@@ -123,4 +123,17 @@ public class Paciente implements Serializable {
     public int hashCode() {
         return Objects.hash(getId(), getCartaoDoSUS(), getPosicaoMembro(), getProntuario(), getPessoa(), getFamilia(), getAreaDeCobertura());
     }
+
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "id=" + id +
+                ", cartaoDoSUS='" + cartaoDoSUS + '\'' +
+                ", posicaoMembro=" + posicaoMembro +
+                ", prontuario=" + prontuario +
+                ", pessoa=" + pessoa +
+                ", familia=" + familia +
+                ", areaDeCobertura=" + areaDeCobertura +
+                '}';
+    }
 }

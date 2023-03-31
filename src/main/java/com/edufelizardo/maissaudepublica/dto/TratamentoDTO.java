@@ -1,5 +1,6 @@
 package com.edufelizardo.maissaudepublica.dto;
 
+import com.edufelizardo.maissaudepublica.model.Tratamento;
 import com.edufelizardo.maissaudepublica.model.enuns.StatusTratamento;
 import jakarta.persistence.Column;
 
@@ -20,13 +21,13 @@ public class TratamentoDTO implements Serializable {
     public TratamentoDTO() {
     }
 
-    public TratamentoDTO(TratamentoDTO dto) {
-        this.tramento_id = dto.getTramento_id();
-        this.datadDeInicio = dto.getDatadDeInicio();
-        this.dataDeTermino = dto.getDataDeTermino();
-        this.descricao = dto.getDescricao();
-        this.status = dto.getStatus();
-        this.resultado = dto.getResultado();
+    public TratamentoDTO(Tratamento tratamento) {
+        this.tramento_id = tratamento.getTramento_id();
+        this.datadDeInicio = tratamento.getDatadDeInicio();
+        this.dataDeTermino = tratamento.getDataDeTermino();
+        this.descricao = tratamento.getDescricao();
+        this.status = tratamento.getStatus();
+        this.resultado = tratamento.getResultado();
     }
 
     public Long getTramento_id() {

@@ -115,4 +115,18 @@ public class Pessoa implements Serializable {
     public int hashCode() {
         return Objects.hash(getId());
     }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "id=" + id +
+                ", nomeCompleto='" + nomeCompleto + '\'' +
+                ", dataDeNascimento=" + dataDeNascimento +
+                ", idade=" + idade +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", telefones=" + telefones +
+                ", endereco=" + endereco +
+                '}';
+    }
 }

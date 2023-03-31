@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class FuncionarioDTO implements Serializable {
     @Serial
@@ -24,7 +26,7 @@ public class FuncionarioDTO implements Serializable {
                 message = "O salário não pode ser maior do que 1.000.000,00")
     private BigDecimal salario;
     private PessoaDTO pessoa;
-    private EscalaTrabalho escalaTrabalho;
+    private EscalaDeTrabalhoDTO escalaDeTrabalhoDTO;
     private Formacao formacao;
     private Departamento departamento;
     private Funcao funcao;
@@ -32,6 +34,7 @@ public class FuncionarioDTO implements Serializable {
 
     public FuncionarioDTO() {
     }
+
     public FuncionarioDTO(Funcionario funcionario) {
         this.id = funcionario.getId();
         this.dataDeAdmissao = funcionario.getDataDeAdmissao();
@@ -39,7 +42,7 @@ public class FuncionarioDTO implements Serializable {
         this.registroProfissional = funcionario.getRegistroProfissional();
         this.salario = funcionario.getSalario();
         this.pessoa = new PessoaDTO(funcionario.getPessoa());
-        this.escalaTrabalho = funcionario.getEscalaTrabalho();
+        this.escalaDeTrabalhoDTO = new EscalaDeTrabalhoDTO(funcionario.getEscalaTrabalho());
         this.formacao =funcionario.getFormacao();
         this.departamento = funcionario.getDepartamento();
         this.funcao = funcionario.getFuncao();
@@ -70,8 +73,8 @@ public class FuncionarioDTO implements Serializable {
         return pessoa;
     }
 
-    public EscalaTrabalho getEscalaTrabalho() {
-        return escalaTrabalho;
+    public EscalaDeTrabalhoDTO getEscalaDeTrabalhoDTO() {
+        return escalaDeTrabalhoDTO;
     }
 
     public Formacao getFormacao() {
@@ -90,6 +93,10 @@ public class FuncionarioDTO implements Serializable {
         return programaDeSaudes;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setDataDeAdmissao(LocalDate dataDeAdmissao) {
         this.dataDeAdmissao = dataDeAdmissao;
     }
@@ -106,16 +113,12 @@ public class FuncionarioDTO implements Serializable {
         this.salario = salario;
     }
 
+    public void setEscalaDeTrabalhoDTO(EscalaDeTrabalhoDTO escalaDeTrabalhoDTO) {
+        this.escalaDeTrabalhoDTO = escalaDeTrabalhoDTO;
+    }
+
     public void setPessoa(PessoaDTO pessoa) {
         this.pessoa = pessoa;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setEscalaTrabalho(EscalaTrabalho escalaTrabalho) {
-        this.escalaTrabalho = escalaTrabalho;
     }
 
     public void setFormacao(Formacao formacao) {

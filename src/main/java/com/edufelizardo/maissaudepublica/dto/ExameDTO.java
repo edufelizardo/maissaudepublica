@@ -1,5 +1,6 @@
 package com.edufelizardo.maissaudepublica.dto;
 
+import com.edufelizardo.maissaudepublica.model.Exame;
 import com.edufelizardo.maissaudepublica.model.Funcionario;
 import com.edufelizardo.maissaudepublica.model.UnidadeDeSaude;
 import com.edufelizardo.maissaudepublica.model.enuns.StatusExame;
@@ -26,15 +27,15 @@ public class ExameDTO implements Serializable {
     public ExameDTO() {
     }
 
-    public ExameDTO(ExameDTO dto) {
-        this.exame_id = dto.getExame_id();
-        this.tipoDoExame = dto.getTipoDoExame();
-        this.dataExame = dto.getDataExame();
-        this.resultado = dto.getResultado();
-        this.funcionario = dto.getFuncionario();
-        this.unidadeDeSaude = dto.getUnidadeDeSaude();
-        this.custos = dto.getCustos();
-        this.statusExame = dto.getStatusExame();
+    public ExameDTO(Exame exame) {
+        this.exame_id = exame.getExame_id();
+        this.tipoDoExame = exame.getTipoDoExame();
+        this.dataExame = exame.getDataExame();
+        this.resultado = exame.getResultado();
+        this.funcionario = exame.getFuncionario();
+        this.unidadeDeSaude = exame.getUnidadeDeSaude();
+        this.custos = exame.getCustos();
+        this.statusExame = exame.getStatusExame();
     }
 
     public Long getExame_id() {

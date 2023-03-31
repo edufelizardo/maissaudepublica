@@ -2,6 +2,7 @@ package com.edufelizardo.maissaudepublica.dto;
 
 import com.edufelizardo.maissaudepublica.model.AreaDeCobertura;
 import com.edufelizardo.maissaudepublica.model.Equipe;
+import com.edufelizardo.maissaudepublica.model.Familia;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
@@ -24,13 +25,13 @@ public class FamiliaDTO implements Serializable {
     public FamiliaDTO() {
     }
 
-    public FamiliaDTO(FamiliaDTO dto) {
-        this.familia_id = dto.getFamilia_id();
-        this.area = dto.isArea();
-        this.numaroFamilia = dto.getNumaroFamilia();
-        this.resposavelFamilia = dto.isResposavelFamilia();
-        this.areaDeCobertura = dto.getAreaDeCobertura();
-        this.equipe = dto.getEquipe();
+    public FamiliaDTO(Familia familia) {
+        this.familia_id = familia.getFamilia_id();
+        this.area = familia.isArea();
+        this.numaroFamilia = familia.getNumaroFamilia();
+        this.resposavelFamilia = familia.isResposavelFamilia();
+        this.areaDeCobertura = familia.getAreaDeCobertura();
+        this.equipe = familia.getEquipe();
     }
 
     public Long getFamilia_id() {

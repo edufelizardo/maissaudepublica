@@ -145,4 +145,18 @@ public class HistoricoMedico implements Serializable {
         return Objects.hash(getHistoricoMedico_id(), getProntuario(), getFuncionarios(), getConsultas(), getExames(),
                 getTratamentos(), getPrescricoesMedicas(), getEncaminhamentos());
     }
+
+    @Override
+    public String toString() {
+        return "HistoricoMedico{" +
+                "historicoMedico_id=" + historicoMedico_id +
+                ", prontuario=" + prontuario +
+                ", funcionarios=" + funcionarios +
+                ", consultas=" + consultas +
+                ", exames=" + exames +
+                ", tratamentos=" + tratamentos +
+                ", prescricoesMedicas=" + prescricoesMedicas +
+                ", encaminhamentos=" + encaminhamentos +
+                '}';
+    }
 }

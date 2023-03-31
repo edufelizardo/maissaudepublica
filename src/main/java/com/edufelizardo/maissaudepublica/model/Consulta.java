@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -17,7 +18,7 @@ public class Consulta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long consulta_id;
     private LocalDate dataConsulta;
-    private LocalDate horarioConsulta;
+    private LocalTime horarioConsulta;
     @OneToMany
     @JoinColumn(name = "consulta_funcionario_id")
     private List<Funcionario> funcionarios;
@@ -50,7 +51,7 @@ public class Consulta implements Serializable {
     public Consulta() {
     }
 
-    public Consulta(Long consulta_id, LocalDate dataConsulta, LocalDate horarioConsulta, List<Funcionario> funcionarios,
+    public Consulta(Long consulta_id, LocalDate dataConsulta, LocalTime horarioConsulta, List<Funcionario> funcionarios,
                     Paciente paciente, ExameFisico exameFisico, String queixa, List<Diagnostico> diagnosticos,
                     Tratamento tratamento, String orientacoesClinicas, PrescricaoMedica prescricaoMedica,
                     List<Exame> exames, List<Encaminhamento> encaminhamentos) {
@@ -92,7 +93,7 @@ public class Consulta implements Serializable {
         return dataConsulta;
     }
 
-    public LocalDate getHorarioConsulta() {
+    public LocalTime getHorarioConsulta() {
         return horarioConsulta;
     }
 
@@ -144,7 +145,7 @@ public class Consulta implements Serializable {
         this.dataConsulta = dataConsulta;
     }
 
-    public void setHorarioConsulta(LocalDate horarioConsulta) {
+    public void setHorarioConsulta(LocalTime horarioConsulta) {
         this.horarioConsulta = horarioConsulta;
     }
 
@@ -211,5 +212,24 @@ public class Consulta implements Serializable {
         return Objects.hash(getConsulta_id(), getDataConsulta(), getHorarioConsulta(), getFuncionarios(),
                 getPaciente(), getExameFisico(), getQueixa(), getDiagnosticos(), getTratamento(),
                 getOrientacoesClinicas(), getPrescricaoMedica(), getExames(), getEncaminhamentos());
+    }
+
+    @Override
+    public String toString() {
+        return "Consulta{" +
+                "consulta_id=" + consulta_id +
+                ", dataConsulta=" + dataConsulta +
+                ", horarioConsulta=" + horarioConsulta +
+                ", funcionarios=" + funcionarios +
+                ", paciente=" + paciente +
+                ", exameFisico=" + exameFisico +
+                ", queixa='" + queixa + '\'' +
+                ", diagnosticos=" + diagnosticos +
+                ", tratamento=" + tratamento +
+                ", orientacoesClinicas='" + orientacoesClinicas + '\'' +
+                ", prescricaoMedica=" + prescricaoMedica +
+                ", exames=" + exames +
+                ", encaminhamentos=" + encaminhamentos +
+                '}';
     }
 }

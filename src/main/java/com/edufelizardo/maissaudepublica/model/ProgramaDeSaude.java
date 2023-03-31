@@ -57,4 +57,12 @@ public class ProgramaDeSaude implements Serializable {
     public int hashCode() {
         return Objects.hash(getProgramaDeSaude_id(), getNomeProgramaDesaude());
     }
+
+    @Override
+    public String toString() {
+        return "ProgramaDeSaude{" +
+                "programaDeSaude_id=" + programaDeSaude_id +
+                ", nomeProgramaDesaude='" + nomeProgramaDesaude + '\'' +
+                '}';
+    }
 }

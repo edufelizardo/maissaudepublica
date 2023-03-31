@@ -60,4 +60,12 @@ public class Departamento implements Serializable {
     public int hashCode() {
         return Objects.hash(getDepartamento_id(), getNomeDoDepartamento());
     }
+
+    @Override
+    public String toString() {
+        return "Departamento{" +
+                "departamento_id=" + departamento_id +
+                ", nomeDoDepartamento='" + nomeDoDepartamento + '\'' +
+                '}';
+    }
 }

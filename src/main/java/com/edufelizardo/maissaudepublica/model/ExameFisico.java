@@ -152,4 +152,19 @@ public class ExameFisico implements Serializable {
         return Objects.hash(getExameFisico_id(), getData(), getPeso(), getAltura(), getPressaoArterialSistolica(),
                 getPressaoArterialDiastolica(), getTemperatura(), getFrequenciaCardiaca(), getFrequenciaRespiratoria());
     }
+
+    @Override
+    public String toString() {
+        return "ExameFisico{" +
+                "exameFisico_id=" + exameFisico_id +
+                ", data=" + data +
+                ", peso=" + peso +
+                ", altura=" + altura +
+                ", pressaoArterialSistolica=" + pressaoArterialSistolica +
+                ", pressaoArterialDiastolica=" + pressaoArterialDiastolica +
+                ", temperatura=" + temperatura +
+                ", frequenciaCardiaca=" + frequenciaCardiaca +
+                ", frequenciaRespiratoria=" + frequenciaRespiratoria +
+                '}';
+    }
 }

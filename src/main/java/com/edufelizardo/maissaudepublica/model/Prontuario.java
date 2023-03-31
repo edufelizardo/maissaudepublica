@@ -73,4 +73,14 @@ public class Prontuario implements Serializable {
     public void setHistoricoMedico(HistoricoMedico historicoMedico) {
         this.historicoMedico = historicoMedico;
     }
+
+    @Override
+    public String toString() {
+        return "Prontuario{" +
+                "prontuario_id=" + prontuario_id +
+                ", numeroProntuario='" + numeroProntuario + '\'' +
+                ", paciente=" + paciente +
+                ", historicoMedico=" + historicoMedico +
+                '}';
+    }
 }

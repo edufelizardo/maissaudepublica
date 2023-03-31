@@ -9,6 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Objects;
 @Entity
 public class EscalaTrabalho implements Serializable {
@@ -18,16 +19,17 @@ public class EscalaTrabalho implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long escalaDeTrabalho_id;
-    private LocalDateTime inicioDoExpediente;
-    private LocalDateTime horarioAlmoco;
-    private LocalDateTime fimDoExpediente;
+    private LocalTime inicioDoExpediente;
+    private LocalTime horarioAlmoco;
+    private LocalTime fimDoExpediente;
     @NotBlank(message = "O nome do expediente é obrigatório.")
     private String nomeDoExpediente;
 
     public EscalaTrabalho() {
     }
 
-    public EscalaTrabalho(Long escalaDeTrabalho_id, LocalDateTime inicioDoExpediente, LocalDateTime horarioAlmoco, LocalDateTime fimDoExpediente, String nomeDoExpediente) {
+    public EscalaTrabalho(Long escalaDeTrabalho_id, LocalTime inicioDoExpediente, LocalTime horarioAlmoco,
+                          LocalTime fimDoExpediente, String nomeDoExpediente) {
         this.escalaDeTrabalho_id = escalaDeTrabalho_id;
         this.inicioDoExpediente = inicioDoExpediente;
         this.horarioAlmoco = horarioAlmoco;
@@ -47,15 +49,15 @@ public class EscalaTrabalho implements Serializable {
         return escalaDeTrabalho_id;
     }
 
-    public LocalDateTime getInicioDoExpediente() {
+    public LocalTime getInicioDoExpediente() {
         return inicioDoExpediente;
     }
 
-    public LocalDateTime getHorarioAlmoco() {
+    public LocalTime getHorarioAlmoco() {
         return horarioAlmoco;
     }
 
-    public LocalDateTime getFimDoExpediente() {
+    public LocalTime getFimDoExpediente() {
         return fimDoExpediente;
     }
 
@@ -67,15 +69,15 @@ public class EscalaTrabalho implements Serializable {
         this.escalaDeTrabalho_id = escalaDeTrabalho_id;
     }
 
-    public void setInicioDoExpediente(LocalDateTime inicioDoExpediente) {
+    public void setInicioDoExpediente(LocalTime inicioDoExpediente) {
         this.inicioDoExpediente = inicioDoExpediente;
     }
 
-    public void setHorarioAlmoco(LocalDateTime horarioAlmoco) {
+    public void setHorarioAlmoco(LocalTime horarioAlmoco) {
         this.horarioAlmoco = horarioAlmoco;
     }
 
-    public void setFimDoExpediente(LocalDateTime fimDoExpediente) {
+    public void setFimDoExpediente(LocalTime fimDoExpediente) {
         this.fimDoExpediente = fimDoExpediente;
     }
 
@@ -98,5 +100,16 @@ public class EscalaTrabalho implements Serializable {
     public int hashCode() {
         return Objects.hash(getEscalaDeTrabalho_id(), getInicioDoExpediente(), getHorarioAlmoco(),
                 getFimDoExpediente(), getNomeDoExpediente());
+    }
+
+    @Override
+    public String toString() {
+        return "EscalaTrabalho{" +
+                "escalaDeTrabalho_id=" + escalaDeTrabalho_id +
+                ", inicioDoExpediente=" + inicioDoExpediente +
+                ", horarioAlmoco=" + horarioAlmoco +
+                ", fimDoExpediente=" + fimDoExpediente +
+                ", nomeDoExpediente='" + nomeDoExpediente + '\'' +
+                '}';
     }
 }

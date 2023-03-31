@@ -1,12 +1,13 @@
 package com.edufelizardo.maissaudepublica.dto;
 
-import com.edufelizardo.maissaudepublica.model.Subarea;
+import com.edufelizardo.maissaudepublica.model.AreaDeCobertura;
 import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AreaDeCoberturaDTO implements Serializable {
     @Serial
@@ -14,15 +15,18 @@ public class AreaDeCoberturaDTO implements Serializable {
     private Long area_id;
     @NotBlank(message = "A área deve ser preenchida.")
     private int area;
-    private List<Subarea> subareas = new ArrayList<>();
+    private List<SubareaDTO> subareasDto = new ArrayList<>();
 
     public AreaDeCoberturaDTO() {
     }
 
-    public AreaDeCoberturaDTO(AreaDeCoberturaDTO dto) {
-        this.area_id = dto.getArea_id();
-        this.area = dto.getArea();
-        this.subareas = dto.getSubareas();
+    public AreaDeCoberturaDTO(AreaDeCobertura cobertura) {
+        this.area_id = cobertura.getArea_id();
+        this.area = cobertura.getArea();
+        this.subareasDto = cobertura.getSubareas()
+                .stream()
+                .map(SubareaDTO::new)
+                .collect(Collectors.toList());
     }
 
     public Long getArea_id() {
@@ -33,8 +37,8 @@ public class AreaDeCoberturaDTO implements Serializable {
         return area;
     }
 
-    public List<Subarea> getSubareas() {
-        return subareas;
+    public List<SubareaDTO> getSubareasDto() {
+        return subareasDto;
     }
 
     public void setArea_id(Long area_id) {
@@ -45,7 +49,7 @@ public class AreaDeCoberturaDTO implements Serializable {
         this.area = area;
     }
 
-    public void setSubareas(List<Subarea> subareas) {
-        this.subareas = subareas;
+    public void setSubareasDto(List<SubareaDTO> subareasDto) {
+        this.subareasDto = subareasDto;
     }
 }

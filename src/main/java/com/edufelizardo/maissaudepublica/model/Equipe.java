@@ -84,4 +84,14 @@ public class Equipe implements Serializable {
     public int hashCode() {
         return Objects.hash(getEquipe_id(), getNomeDaEquipe(), getRegiao(), getFuncionarios());
     }
+
+    @Override
+    public String toString() {
+        return "Equipe{" +
+                "equipe_id=" + equipe_id +
+                ", NomeDaEquipe='" + NomeDaEquipe + '\'' +
+                ", regiao=" + regiao +
+                ", funcionarios=" + funcionarios +
+                '}';
+    }
 }

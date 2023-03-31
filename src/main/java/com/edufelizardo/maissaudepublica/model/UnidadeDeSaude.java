@@ -129,4 +129,17 @@ public class UnidadeDeSaude implements Serializable {
         return Objects.hash(getUnidadeDeSaude_id(), getNomeUnidadeDeSaude(), getEndereco(), getUnidadeTelefones(),
                 getEquipamentoDeSaude(), getNumeroDeLeitos(), getEspecialidades());
     }
+
+    @Override
+    public String toString() {
+        return "UnidadeDeSaude{" +
+                "unidadeDeSaude_id=" + unidadeDeSaude_id +
+                ", nomeUnidadeDeSaude='" + nomeUnidadeDeSaude + '\'' +
+                ", endereco=" + endereco +
+                ", unidadeTelefones=" + unidadeTelefones +
+                ", equipamentoDeSaude=" + equipamentoDeSaude +
+                ", numeroDeLeitos=" + numeroDeLeitos +
+                ", especialidades=" + especialidades +
+                '}';
+    }
 }

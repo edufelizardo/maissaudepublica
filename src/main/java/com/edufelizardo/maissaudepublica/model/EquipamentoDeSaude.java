@@ -57,4 +57,12 @@ public class EquipamentoDeSaude implements Serializable {
     public int hashCode() {
         return Objects.hash(getEquipamentodeSaude_id(), getNomeDoEquipamento());
     }
+
+    @Override
+    public String toString() {
+        return "EquipamentoDeSaude{" +
+                "equipamentodeSaude_id=" + equipamentodeSaude_id +
+                ", nomeDoEquipamento='" + nomeDoEquipamento + '\'' +
+                '}';
+    }
 }

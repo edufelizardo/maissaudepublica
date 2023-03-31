@@ -108,4 +108,16 @@ public class Encaminhamento implements Serializable{
         return Objects.hash(getEncaminhamento_id(), getDataDoEncaminhamento(), getMotivoDoEncaminhamento(),
                 getEspecialidadeMedica(), getObservacoes(), getStatusTratamento());
     }
+
+    @Override
+    public String toString() {
+        return "Encaminhamento{" +
+                "encaminhamento_id=" + encaminhamento_id +
+                ", dataDoEncaminhamento=" + dataDoEncaminhamento +
+                ", motivoDoEncaminhamento='" + motivoDoEncaminhamento + '\'' +
+                ", especialidadeMedica=" + especialidadeMedica +
+                ", observacoes='" + observacoes + '\'' +
+                ", statusTratamento=" + statusTratamento +
+                '}';
+    }
 }
