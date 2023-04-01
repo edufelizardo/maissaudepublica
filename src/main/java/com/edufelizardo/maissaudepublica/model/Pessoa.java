@@ -118,15 +118,15 @@ public class Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "Pessoa{" +
-                "id=" + id +
-                ", nomeCompleto='" + nomeCompleto + '\'' +
-                ", dataDeNascimento=" + dataDeNascimento +
-                ", idade=" + idade +
-                ", cpf='" + cpf + '\'' +
-                ", email='" + email + '\'' +
-                ", telefones=" + telefones +
-                ", endereco=" + endereco +
+        return "Pessoa{" + "\n" +
+                "id=" + id + "\n" +
+                ", nomeCompleto='" + nomeCompleto + '\'' + "\n" +
+                ", dataDeNascimento=" + dataDeNascimento + "\n" +
+                ", idade=" + idade + "\n" +
+                ", cpf='" + cpf + '\'' + "\n" +
+                ", email='" + email + '\'' + "\n" +
+                ", telefones=" + telefones + "\n" +
+                ", endereco=" + endereco + "\n" +
                 '}';
     }
 }

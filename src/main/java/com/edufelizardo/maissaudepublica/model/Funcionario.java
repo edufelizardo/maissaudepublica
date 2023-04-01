@@ -38,7 +38,7 @@ public class Funcionario implements Serializable {
     @JoinColumn(name = "funcao_id")
     private Funcao funcao;
     @OneToMany
-    @JoinColumn(name = "pro_de_saude_id")
+    @JoinColumn(name = "funcionario_id")
     private List<ProgramaDeSaude> programaDeSaudes = new ArrayList<>();
 
     public Funcionario() {
@@ -186,18 +186,18 @@ public class Funcionario implements Serializable {
 
     @Override
     public String toString() {
-        return "Funcionario{" +
-                "id=" + id +
-                ", dataDeAdmissao=" + dataDeAdmissao +
-                ", dataDeDemissao=" + dataDeDemissao +
-                ", registroProfissional='" + registroProfissional + '\'' +
-                ", salario=" + salario +
-                ", pessoa=" + pessoa +
-                ", escalaTrabalho=" + escalaTrabalho +
-                ", formacao=" + formacao +
-                ", departamento=" + departamento +
-                ", funcao=" + funcao +
-                ", programaDeSaudes=" + programaDeSaudes +
+        return "Funcionario{" + "\n" +
+                "id=" + id + "\n" +
+                ", Data De Admissao=" + dataDeAdmissao + "\n" +
+                ", Data De Demissao=" + dataDeDemissao + "\n" +
+                ", Registro Profissional='" + registroProfissional + '\'' + "\n" +
+                ", Salario=" + salario + "\n" +
+                ", Dados do Profissional=" + pessoa + "\n" +
+                ", Escala De Trabalho=" + escalaTrabalho + "\n" +
+                ", Formação=" + formacao +
+                ", Departamento=" + departamento + "\n" +
+                ", Função=" + funcao + "\n" +
+                ", Programa De Saùde=" + programaDeSaudes + "\n" +
                 '}';
     }
 }
