@@ -1,7 +1,10 @@
 package com.edufelizardo.maissaudepublica.model;
 
+import com.edufelizardo.maissaudepublica.dto.DepartamentoDTO;
+import com.edufelizardo.maissaudepublica.dto.FormacaoDTO;
+import com.edufelizardo.maissaudepublica.dto.FuncaoDTO;
+import com.edufelizardo.maissaudepublica.dto.ProgramaDeSaudeDTO;
 import jakarta.persistence.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serial;
 import java.io.Serializable;

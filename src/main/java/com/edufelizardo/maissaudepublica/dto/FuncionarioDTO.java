@@ -8,9 +8,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 
 public class FuncionarioDTO implements Serializable {
@@ -27,26 +25,141 @@ public class FuncionarioDTO implements Serializable {
     private BigDecimal salario;
     private PessoaDTO pessoa;
     private EscalaDeTrabalhoDTO escalaDeTrabalhoDTO;
-    private Formacao formacao;
-    private Departamento departamento;
-    private Funcao funcao;
-    private List<ProgramaDeSaude> programaDeSaudes = new ArrayList<>();
+    private FormacaoDTO formacao;
+    private DepartamentoDTO departamento;
+    private FuncaoDTO funcao;
+    private List<ProgramaDeSaudeDTO> programaDeSaudes = new ArrayList<>();
 
     public FuncionarioDTO() {
     }
 
     public FuncionarioDTO(Funcionario funcionario) {
-        this.id = funcionario.getId();
+        this.id = id;
         this.dataDeAdmissao = funcionario.getDataDeAdmissao();
         this.dataDeDemissao = funcionario.getDataDeDemissao();
         this.registroProfissional = funcionario.getRegistroProfissional();
         this.salario = funcionario.getSalario();
         this.pessoa = new PessoaDTO(funcionario.getPessoa());
         this.escalaDeTrabalhoDTO = new EscalaDeTrabalhoDTO(funcionario.getEscalaTrabalho());
-        this.formacao =funcionario.getFormacao();
-        this.departamento = funcionario.getDepartamento();
-        this.funcao = funcionario.getFuncao();
-        this.programaDeSaudes = funcionario.getProgramaDeSaudes();
+        this.formacao = new FormacaoDTO(funcionario.getFormacao());
+        this.departamento = new DepartamentoDTO(funcionario.getDepartamento());
+        this.funcao = new FuncaoDTO(funcionario.getFuncao());
+        this.programaDeSaudes = new List<ProgramaDeSaudeDTO>() {
+            @Override
+            public int size() {
+                return 0;
+            }
+
+            @Override
+            public boolean isEmpty() {
+                return false;
+            }
+
+            @Override
+            public boolean contains(Object o) {
+                return false;
+            }
+
+            @Override
+            public Iterator<ProgramaDeSaudeDTO> iterator() {
+                return null;
+            }
+
+            @Override
+            public Object[] toArray() {
+                return new Object[0];
+            }
+
+            @Override
+            public <T> T[] toArray(T[] a) {
+                return null;
+            }
+
+            @Override
+            public boolean add(ProgramaDeSaudeDTO programaDeSaudeDTO) {
+                return false;
+            }
+
+            @Override
+            public boolean remove(Object o) {
+                return false;
+            }
+
+            @Override
+            public boolean containsAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public boolean addAll(Collection<? extends ProgramaDeSaudeDTO> c) {
+                return false;
+            }
+
+            @Override
+            public boolean addAll(int index, Collection<? extends ProgramaDeSaudeDTO> c) {
+                return false;
+            }
+
+            @Override
+            public boolean removeAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public boolean retainAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public void clear() {
+
+            }
+
+            @Override
+            public ProgramaDeSaudeDTO get(int index) {
+                return null;
+            }
+
+            @Override
+            public ProgramaDeSaudeDTO set(int index, ProgramaDeSaudeDTO element) {
+                return null;
+            }
+
+            @Override
+            public void add(int index, ProgramaDeSaudeDTO element) {
+
+            }
+
+            @Override
+            public ProgramaDeSaudeDTO remove(int index) {
+                return null;
+            }
+
+            @Override
+            public int indexOf(Object o) {
+                return 0;
+            }
+
+            @Override
+            public int lastIndexOf(Object o) {
+                return 0;
+            }
+
+            @Override
+            public ListIterator<ProgramaDeSaudeDTO> listIterator() {
+                return null;
+            }
+
+            @Override
+            public ListIterator<ProgramaDeSaudeDTO> listIterator(int index) {
+                return null;
+            }
+
+            @Override
+            public List<ProgramaDeSaudeDTO> subList(int fromIndex, int toIndex) {
+                return null;
+            }
+        };
     }
 
     public Long getId() {
@@ -77,19 +190,19 @@ public class FuncionarioDTO implements Serializable {
         return escalaDeTrabalhoDTO;
     }
 
-    public Formacao getFormacao() {
+    public FormacaoDTO getFormacao() {
         return formacao;
     }
 
-    public Departamento getDepartamento() {
+    public DepartamentoDTO getDepartamento() {
         return departamento;
     }
 
-    public Funcao getFuncao() {
+    public FuncaoDTO getFuncao() {
         return funcao;
     }
 
-    public List<ProgramaDeSaude> getProgramaDeSaudes() {
+    public List<ProgramaDeSaudeDTO> getProgramaDeSaudes() {
         return programaDeSaudes;
     }
 
@@ -113,27 +226,27 @@ public class FuncionarioDTO implements Serializable {
         this.salario = salario;
     }
 
-    public void setEscalaDeTrabalhoDTO(EscalaDeTrabalhoDTO escalaDeTrabalhoDTO) {
-        this.escalaDeTrabalhoDTO = escalaDeTrabalhoDTO;
-    }
-
     public void setPessoa(PessoaDTO pessoa) {
         this.pessoa = pessoa;
     }
 
-    public void setFormacao(Formacao formacao) {
+    public void setEscalaDeTrabalhoDTO(EscalaDeTrabalhoDTO escalaDeTrabalhoDTO) {
+        this.escalaDeTrabalhoDTO = escalaDeTrabalhoDTO;
+    }
+
+    public void setFormacao(FormacaoDTO formacao) {
         this.formacao = formacao;
     }
 
-    public void setDepartamento(Departamento departamento) {
+    public void setDepartamento(DepartamentoDTO departamento) {
         this.departamento = departamento;
     }
 
-    public void setFuncao(Funcao funcao) {
+    public void setFuncao(FuncaoDTO funcao) {
         this.funcao = funcao;
     }
 
-    public void setProgramaDeSaudes(List<ProgramaDeSaude> programaDeSaudes) {
+    public void setProgramaDeSaudes(List<ProgramaDeSaudeDTO> programaDeSaudes) {
         this.programaDeSaudes = programaDeSaudes;
     }
 }

@@ -16,7 +16,6 @@ public class Formacao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long nomeDaFormacao_id;
-    @NotBlank(message = "O nome da formação é obrigatório")
     private String nomeFormacao;
 
     public Formacao() {
