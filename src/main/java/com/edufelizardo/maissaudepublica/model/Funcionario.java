@@ -49,7 +49,7 @@ public class Funcionario implements Serializable {
 
     public Funcionario(Long id, LocalDate dataDeAdmissao, LocalDate dataDeDemissao, String registroProfissional,
                        BigDecimal salario, Pessoa pessoa, EscalaTrabalho escalaTrabalho, Formacao formacao,
-                       Departamento departamento, Funcao funcao, List<ProgramaDeSaude> programaDeSaudes) {
+                       Departamento departamento, Funcao funcao) {
         this.id = id;
         this.dataDeAdmissao = dataDeAdmissao;
         this.dataDeDemissao = dataDeDemissao;
@@ -60,7 +60,6 @@ public class Funcionario implements Serializable {
         this.formacao = formacao;
         this.departamento = departamento;
         this.funcao = funcao;
-        this.programaDeSaudes = programaDeSaudes;
     }
 
     public Funcionario(Funcionario funcionario) {

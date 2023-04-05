@@ -1,8 +1,7 @@
 package com.edufelizardo.maissaudepublica.repositories;
 
-import com.edufelizardo.maissaudepublica.model.Endereco;
-import com.edufelizardo.maissaudepublica.model.Funcionario;
-import com.edufelizardo.maissaudepublica.model.Pessoa;
+import com.edufelizardo.maissaudepublica.model.*;
+import com.edufelizardo.maissaudepublica.util.TestFuncionarioUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -11,29 +10,43 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @DataJpaTest
 @DisplayName("Testando Funcionarios")
 class FuncionarioRepositoryTest {
+    @Autowired
+    private TestEntityManager testEntityManager;
     @Autowired
     private FuncionarioRepository funcionarioRepository;
     @Autowired
     private PessoaRepository pessoaRepository;
     @Autowired
     private EnderecoRepository enderecoRepository;
+    @Autowired
+    private EscalaDeTrabalhoRepository escalaDeTrabalhoRepository;
+    @Autowired
+    private FormacaoRepository formacaoRepository;
+    @Autowired
+    private  DepartamentoRepository departamentoRepository;
+    @Autowired
+    private FuncaoRepository funcaoRepository;
     private Funcionario funcionario;
-    private Pessoa pessoa;
-    private Endereco endereco;
+
     @Test
     @DisplayName("Buscar Funcionário Pelo Nome Completo - Funcionário Encontrado")
     void testBuscarFuncionarioPeloNomeEncontrado() throws JsonProcessingException {;
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -54,7 +67,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioPeloNomeNaoEncontrado() throws JsonProcessingException {;
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -75,7 +89,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioParteDoNomeEncontrado() throws JsonProcessingException {;
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -97,7 +112,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioParteDoNomeNaoEncontrado() throws JsonProcessingException {;
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -119,7 +135,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioPeloCpfEncontrado() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -140,7 +157,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioPeloCpfNaoEncontrado() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -161,7 +179,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioPorParteDoCpfEncontrado() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -182,7 +201,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioPorParteDoCpfNaoEncontrado() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -203,7 +223,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioPelaFuncaoEncontrado() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -225,7 +246,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioPelaFuncaoNaoEncontrado() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -246,7 +268,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioPeloDepartamentoEncontrado() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -268,7 +291,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioPeloDepartamentoNaoEncontrado() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -334,7 +358,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioPelaEscalaDeTrabalhoEncontrados() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -345,7 +370,7 @@ class FuncionarioRepositoryTest {
             System.out.println("Funcionario não encontrado.");
         }else {
             Assertions.assertNotNull(funcionario.getId());
-            Assertions.assertEquals("Matutino 1", funcionario.getFuncao().getNomeFuncao());
+            Assertions.assertEquals("Matutino 1", funcionario.getEscalaTrabalho().getNomeDoExpediente());
 
             String json = objectMapper.writeValueAsString(funcionariosEncontrados);
             System.out.println(json);
@@ -356,7 +381,8 @@ class FuncionarioRepositoryTest {
     void testBuscarFuncionarioPelaEscalaDeTrabalhoNaoEncontrados() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
-        funcionario = criarFuncionario();
+        funcionario = TestFuncionarioUtils.registraFuncionarioMedicoUm(enderecoRepository, pessoaRepository, escalaDeTrabalhoRepository,
+                formacaoRepository, departamentoRepository, funcaoRepository);
         funcionarioRepository.save(funcionario);
 
         // Buscar funcionário pelo nome completo
@@ -372,49 +398,5 @@ class FuncionarioRepositoryTest {
             String json = objectMapper.writeValueAsString(funcionariosEncontrados);
             System.out.println(json);
         }
-    }
-    private Endereco criarEndereco() {
-        endereco = new Endereco();
-        endereco.setCep("01001-000");
-        endereco.setLogradouro("Praça da Sé");
-        endereco.setNumero(1);
-        endereco.setComplemento(null);
-        endereco.setBairro("Sé");
-        endereco.setLocalidade("São Paulo");
-        endereco.setUf("SP");
-        endereco.setIbge("3550308");
-        endereco.setGia("1004");
-        endereco.setDdd("11");
-        endereco.setSiafi("P7107");
-
-        return  endereco;
-    }
-    private Pessoa criarPessoa() {
-        endereco = criarEndereco();
-        pessoa = new Pessoa();
-        pessoa.setNomeCompleto("João Silva");
-        pessoa.setDataDeNascimento(LocalDate.of(1985, 05, 20));
-        pessoa.setIdade(36);
-        pessoa.setCpf("123.456.789-00");
-        pessoa.setEmail("joao.silva@test.com");
-        enderecoRepository.save(endereco);
-        pessoa.setEndereco(endereco);
-        return pessoa;
-    }
-    private Funcionario criarFuncionario() {
-        endereco = criarEndereco();
-        pessoa = criarPessoa();
-        funcionario = new Funcionario();
-        funcionario.setDataDeAdmissao(LocalDate.of(2021,8,05));
-        funcionario.setRegistroProfissional("CRO 123456");
-        funcionario.setSalario(BigDecimal.valueOf(10000));
-        pessoaRepository.save(pessoa);
-        funcionario.setPessoa(pessoa);
-//        funcionario.setEscalaDeTrabalhoDTO(new EscalaDeTrabalhoUtil().criarEDTMatutinoUmDTO());
-//        funcionario.setFormacao(new FormacaoUtil().criarFormacaoMedicinaDTO());
-//        funcionario.setDepartamento(new DepartamentoUtil().criarDepartamentoClinicaMedicaUtil());
-//        funcionario.setFuncao(new FuncaoUtil().criarFuncaoMedicoDTO());
-//        funcionario.setProgramaDeSaudes(new ProgramaDeSaudeUtil().criarPDSNaoPerteceANenhumPrograma());
-        return funcionario;
     }
 }

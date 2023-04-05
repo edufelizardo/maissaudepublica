@@ -57,13 +57,8 @@ public class Prontuario implements Serializable {
         this.prontuario_id = prontuario_id;
     }
 
-    public void setNumeroProntuario(Paciente paciente) {
-        int area = paciente.getAreaDeCobertura().getArea();
-        List<Subarea> microarea = paciente.getAreaDeCobertura().getSubareas();
-        int familia = paciente.getFamilia().getNumaroFamilia();
-        int pac = paciente.getPosicaoMembro();
-
-        this.numeroProntuario = String.valueOf(area + "." + microarea + "." + familia +"-" + pac);
+    public void setNumeroProntuario(String numeroProntuario) {
+        this.numeroProntuario = numeroProntuario;
     }
 
     public void setPaciente(Paciente paciente) {

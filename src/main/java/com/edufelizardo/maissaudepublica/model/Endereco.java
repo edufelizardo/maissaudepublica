@@ -1,9 +1,6 @@
 package com.edufelizardo.maissaudepublica.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -27,11 +24,19 @@ public class Endereco implements Serializable {
     private String gia;
     private String ddd;
     private String siafi;
+    @OneToOne
+    @JoinColumn(name = "familia_id")
+    private Familia familia;
+    @OneToOne
+    @JoinColumn(name = "area_id")
+    private AreaDeCobertura areaDeCobertura;
 
     public Endereco() {
     }
 
-    public Endereco(Long id, String cep, String logradouro, int numero, String complemento, String bairro, String localidade, String uf, String ibge, String gia, String ddd, String siafi) {
+    public Endereco(Long id, String cep, String logradouro, int numero, String complemento, String bairro,
+                    String localidade, String uf, String ibge, String gia, String ddd, String siafi, Familia familia,
+                    AreaDeCobertura areaDeCobertura) {
         this.id = id;
         this.cep = cep;
         this.logradouro = logradouro;
@@ -44,6 +49,8 @@ public class Endereco implements Serializable {
         this.gia = gia;
         this.ddd = ddd;
         this.siafi = siafi;
+        this.familia = familia;
+        this.areaDeCobertura = areaDeCobertura;
     }
 
     public Long getId() {
@@ -94,6 +101,14 @@ public class Endereco implements Serializable {
         return siafi;
     }
 
+    public Familia getFamilia() {
+        return familia;
+    }
+
+    public AreaDeCobertura getAreaDeCobertura() {
+        return areaDeCobertura;
+    }
+
     public void setCep(String cep) {
         this.cep = cep;
     }
@@ -138,16 +153,40 @@ public class Endereco implements Serializable {
         this.siafi = siafi;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setFamilia(Familia familia) {
+        this.familia = familia;
+    }
+
+    public void setAreaDeCobertura(AreaDeCobertura areaDeCobertura) {
+        this.areaDeCobertura = areaDeCobertura;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Endereco endereco)) return false;
-        return Objects.equals(getId(), endereco.getId());
+        return getNumero() == endereco.getNumero() && Objects.equals(getId(),
+                endereco.getId()) && Objects.equals(getCep(), endereco.getCep()) && Objects.equals(getLogradouro(),
+                endereco.getLogradouro()) && Objects.equals(getComplemento(),
+                endereco.getComplemento()) && Objects.equals(getBairro(),
+                endereco.getBairro()) && Objects.equals(getLocalidade(),
+                endereco.getLocalidade()) && Objects.equals(getUf(),
+                endereco.getUf()) && Objects.equals(getIbge(),
+                endereco.getIbge()) && Objects.equals(getGia(),
+                endereco.getGia()) && Objects.equals(getDdd(),
+                endereco.getDdd()) && Objects.equals(getSiafi(),
+                endereco.getSiafi()) && Objects.equals(getFamilia(),
+                endereco.getFamilia()) && Objects.equals(getAreaDeCobertura(), endereco.getAreaDeCobertura());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(getId(), getCep(), getLogradouro(), getNumero(), getComplemento(), getBairro(),
+                getLocalidade(), getUf(), getIbge(), getGia(), getDdd(), getSiafi(), getFamilia(), getAreaDeCobertura());
     }
 
     @Override
@@ -165,6 +204,8 @@ public class Endereco implements Serializable {
                 ", gia='" + gia + '\'' +
                 ", ddd='" + ddd + '\'' +
                 ", siafi='" + siafi + '\'' +
+                ", familia=" + familia +
+                ", areaDeCobertura=" + areaDeCobertura +
                 '}';
     }
 }

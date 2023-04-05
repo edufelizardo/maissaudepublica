@@ -35,8 +35,6 @@ public class PacienteDTO implements Serializable {
         this.posicaoMembro = paciente.getPosicaoMembro();
         this.prontuario = paciente.getProntuario();
         this.pessoa = new PessoaDTO(paciente.getPessoa());
-        this.familiaDTO = new FamiliaDTO(paciente.getFamilia());
-        this.areaDeCoberturaDTO = new AreaDeCoberturaDTO(paciente.getAreaDeCobertura());
     }
 
     public Long getId() {

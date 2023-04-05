@@ -25,7 +25,7 @@ public class Pessoa implements Serializable {
     @CollectionTable(name = "telefones")
     private Set<String> telefones = new HashSet<>();
     @ManyToOne
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
     public Pessoa() {
@@ -38,6 +38,10 @@ public class Pessoa implements Serializable {
         this.cpf = cpf;
         this.email = email;
         this.endereco = endereco;
+    }
+
+    public Pessoa(Pessoa pessoa, Set<String> telefones) {
+        this.telefones = telefones;
     }
 
     public Long getId() {
@@ -118,15 +122,15 @@ public class Pessoa implements Serializable {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "\n" +
-                "id=" + id + "\n" +
-                ", nomeCompleto='" + nomeCompleto + '\'' + "\n" +
-                ", dataDeNascimento=" + dataDeNascimento + "\n" +
-                ", idade=" + idade + "\n" +
-                ", cpf='" + cpf + '\'' + "\n" +
-                ", email='" + email + '\'' + "\n" +
-                ", telefones=" + telefones + "\n" +
-                ", endereco=" + endereco + "\n" +
+        return "Pessoa{" +
+                "id=" + id +
+                ", nomeCompleto='" + nomeCompleto + '\'' +
+                ", dataDeNascimento=" + dataDeNascimento +
+                ", idade=" + idade +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", telefones=" + telefones +
+                ", endereco=" + endereco +
                 '}';
     }
 }

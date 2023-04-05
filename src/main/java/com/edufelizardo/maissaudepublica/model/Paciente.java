@@ -20,35 +20,17 @@ public class Paciente implements Serializable {
     @OneToOne
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
-    @OneToOne
-    @JoinColumn(name = "pessoa_da_familia_id")
-    private Familia familia;
-    @OneToOne
-    @JoinColumn(name = "paciente_area_id")
-    private AreaDeCobertura areaDeCobertura;
+
 
     public Paciente() {
     }
 
-    public Paciente(Long id, String cartaoDoSUS, int posicaoMembro, Prontuario prontuario, Pessoa pessoa,
-                    Familia familia, AreaDeCobertura areaDeCobertura) {
+    public Paciente(Long id, String cartaoDoSUS, int posicaoMembro, Prontuario prontuario, Pessoa pessoa) {
         this.id = id;
         this.cartaoDoSUS = cartaoDoSUS;
         this.posicaoMembro = posicaoMembro;
         this.prontuario = prontuario;
         this.pessoa = pessoa;
-        this.familia = familia;
-        this.areaDeCobertura = areaDeCobertura;
-    }
-
-    public Paciente(Paciente paciente) {
-        this.id = paciente.getId();
-        this.cartaoDoSUS = paciente.getCartaoDoSUS();
-        this.posicaoMembro = paciente.getPosicaoMembro();
-        this.prontuario = paciente.getProntuario();
-        this.pessoa = paciente.getPessoa();
-        this.familia = paciente.getFamilia();
-        this.areaDeCobertura = paciente.getAreaDeCobertura();
     }
 
     public Long getId() {
@@ -71,14 +53,6 @@ public class Paciente implements Serializable {
         return pessoa;
     }
 
-    public Familia getFamilia() {
-        return familia;
-    }
-
-    public AreaDeCobertura getAreaDeCobertura() {
-        return areaDeCobertura;
-    }
-
     public void setCartaoDoSUS(String cartaoDoSUS) {
         this.cartaoDoSUS = cartaoDoSUS;
     }
@@ -99,14 +73,6 @@ public class Paciente implements Serializable {
         this.id = id;
     }
 
-    public void setFamilia(Familia familia) {
-        this.familia = familia;
-    }
-
-    public void setAreaDeCobertura(AreaDeCobertura areaDeCobertura) {
-        this.areaDeCobertura = areaDeCobertura;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -114,14 +80,12 @@ public class Paciente implements Serializable {
         return getPosicaoMembro() == paciente.getPosicaoMembro() && Objects.equals(getId(),
                 paciente.getId()) && Objects.equals(getCartaoDoSUS(),
                 paciente.getCartaoDoSUS()) && Objects.equals(getProntuario(),
-                paciente.getProntuario()) && Objects.equals(getPessoa(),
-                paciente.getPessoa()) && Objects.equals(getFamilia(),
-                paciente.getFamilia()) && Objects.equals(getAreaDeCobertura(), paciente.getAreaDeCobertura());
+                paciente.getProntuario()) && Objects.equals(getPessoa(), paciente.getPessoa());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getCartaoDoSUS(), getPosicaoMembro(), getProntuario(), getPessoa(), getFamilia(), getAreaDeCobertura());
+        return Objects.hash(getId(), getCartaoDoSUS(), getPosicaoMembro(), getProntuario(), getPessoa());
     }
 
     @Override
@@ -132,8 +96,6 @@ public class Paciente implements Serializable {
                 ", posicaoMembro=" + posicaoMembro +
                 ", prontuario=" + prontuario +
                 ", pessoa=" + pessoa +
-                ", familia=" + familia +
-                ", areaDeCobertura=" + areaDeCobertura +
                 '}';
     }
 }

@@ -1,7 +1,6 @@
 package com.edufelizardo.maissaudepublica.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -15,7 +14,7 @@ public class Familia implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long familia_id;
     private boolean area;
-    private int numaroFamilia;
+    private int numeroFamilia;
     private boolean resposavelFamilia;
     @OneToOne
     @JoinColumn(name = "familia_area_id")
@@ -27,11 +26,11 @@ public class Familia implements Serializable {
     public Familia() {
     }
 
-    public Familia(Long familia_id, boolean area, int numaroFamilia, boolean resposavelFamilia,
+    public Familia(Long familia_id, boolean area, int numeroFamilia, boolean resposavelFamilia,
                    AreaDeCobertura areaDeCobertura, Equipe equipe) {
         this.familia_id = familia_id;
         this.area = area;
-        this.numaroFamilia = numaroFamilia;
+        this.numeroFamilia = numeroFamilia;
         this.resposavelFamilia = resposavelFamilia;
         this.areaDeCobertura = areaDeCobertura;
         this.equipe = equipe;
@@ -39,7 +38,7 @@ public class Familia implements Serializable {
     public Familia(Familia familia) {
         this.familia_id = familia.getFamilia_id();
         this.area = familia.isArea();
-        this.numaroFamilia = familia.getNumaroFamilia();
+        this.numeroFamilia = familia.getNumeroFamilia();
         this.resposavelFamilia = familia.isResposavelFamilia();
         this.areaDeCobertura = familia.getAreaDeCobertura();
         this.equipe = familia.getEquipe();
@@ -53,8 +52,8 @@ public class Familia implements Serializable {
         return area;
     }
 
-    public int getNumaroFamilia() {
-        return numaroFamilia;
+    public int getNumeroFamilia() {
+        return numeroFamilia;
     }
 
     public boolean isResposavelFamilia() {
@@ -77,8 +76,8 @@ public class Familia implements Serializable {
         this.area = area;
     }
 
-    public void setNumaroFamilia(int numaroFamilia) {
-        this.numaroFamilia = numaroFamilia;
+    public void setNumeroFamilia(int numaroFamilia) {
+        this.numeroFamilia = numaroFamilia;
     }
 
     public void setResposavelFamilia(boolean resposavelFamilia) {
@@ -97,8 +96,8 @@ public class Familia implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Familia familia)) return false;
-        return isArea() == familia.isArea() && getNumaroFamilia() ==
-                familia.getNumaroFamilia() && isResposavelFamilia() ==
+        return isArea() == familia.isArea() && getNumeroFamilia() ==
+                familia.getNumeroFamilia() && isResposavelFamilia() ==
                 familia.isResposavelFamilia() && Objects.equals(getFamilia_id(),
                 familia.getFamilia_id()) && Objects.equals(getAreaDeCobertura(),
                 familia.getAreaDeCobertura()) && Objects.equals(getEquipe(), familia.getEquipe());
@@ -106,7 +105,7 @@ public class Familia implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFamilia_id(), isArea(), getNumaroFamilia(), isResposavelFamilia(),
+        return Objects.hash(getFamilia_id(), isArea(), getNumeroFamilia(), isResposavelFamilia(),
                 getAreaDeCobertura(), getEquipe());
     }
 
@@ -115,7 +114,7 @@ public class Familia implements Serializable {
         return "Familia{" +
                 "familia_id=" + familia_id +
                 ", area=" + area +
-                ", numaroFamilia=" + numaroFamilia +
+                ", numaroFamilia=" + numeroFamilia +
                 ", resposavelFamilia=" + resposavelFamilia +
                 ", areaDeCobertura=" + areaDeCobertura +
                 ", equipe=" + equipe +
