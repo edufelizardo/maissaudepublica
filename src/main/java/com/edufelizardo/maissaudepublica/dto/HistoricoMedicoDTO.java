@@ -14,8 +14,6 @@ public class HistoricoMedicoDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = -3810810986407783323L;
     private Long historicoMedico_id;
-    private Prontuario prontuario;
-    private List<Funcionario> funcionarios;
     private List<Consulta> consultas = new ArrayList<>();
     private List<Exame> exames = new ArrayList<>();
     private List<Tratamento> tratamentos = new ArrayList<>();
@@ -27,8 +25,6 @@ public class HistoricoMedicoDTO implements Serializable {
 
     public HistoricoMedicoDTO(HistoricoMedico medico) {
         this.historicoMedico_id = medico.getHistoricoMedico_id();
-        this.prontuario = medico.getProntuario();
-        this.funcionarios = medico.getFuncionarios();
         this.consultas = medico.getConsultas();
         this.exames = medico.getExames();
         this.tratamentos = medico.getTratamentos();
@@ -38,14 +34,6 @@ public class HistoricoMedicoDTO implements Serializable {
 
     public Long getHistoricoMedico_id() {
         return historicoMedico_id;
-    }
-
-    public Prontuario getProntuario() {
-        return prontuario;
-    }
-
-    public List<Funcionario> getFuncionarios() {
-        return funcionarios;
     }
 
     public List<Consulta> getConsultas() {
@@ -70,14 +58,6 @@ public class HistoricoMedicoDTO implements Serializable {
 
     public void setHistoricoMedico_id(Long historicoMedico_id) {
         this.historicoMedico_id = historicoMedico_id;
-    }
-
-    public void setProntuario(Prontuario prontuario) {
-        this.prontuario = prontuario;
-    }
-
-    public void setFuncionarios(List<Funcionario> funcionarios) {
-        this.funcionarios = funcionarios;
     }
 
     public void setConsultas(List<Consulta> consultas) {

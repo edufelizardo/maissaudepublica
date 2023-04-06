@@ -1,0 +1,3 @@
+Quando o paciente for cadastrado, deverá ser criado em conjunto o prontuário para que saja criado o Id
+e anexado ao paciente e o Histórico médico para que futuramente as operações de Consultas, etc,
+possam serr incorpordo...

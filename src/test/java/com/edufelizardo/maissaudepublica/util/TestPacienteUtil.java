@@ -17,7 +17,7 @@ public class TestPacienteUtil {
                                            HistoricoMedicoRepository historicoMedicoRepository){
         Subarea subarea;
         List<Subarea> subareas = new ArrayList<>();
-        subarea = new Subarea(null, 1);
+        subarea = new Subarea(null, 001);
         subareas.add(subarea);
 //        subarea = new Subarea(null, 2);
 //        subareas.add(subarea);
@@ -30,7 +30,7 @@ public class TestPacienteUtil {
 //        subarea = new Subarea(null, 6);
 //        subareas.add(subarea);
 
-        AreaDeCobertura areaDeCobertura1 = new AreaDeCobertura(null, 1, subareas);
+        AreaDeCobertura areaDeCobertura1 = new AreaDeCobertura(null, 001, subareas);
         subareaRepository.saveAll(subareas);
         areaDeCoberturaRepository.save(areaDeCobertura1);
 
@@ -39,7 +39,7 @@ public class TestPacienteUtil {
         equipe1.setRegiao(areaDeCobertura1);
         equipeRepository.save(equipe1);
 
-        Familia familia1 = new Familia(null, true, 1, true, areaDeCobertura1, equipe1);
+        Familia familia1 = new Familia(null, "001", true);
         familiaRepository.save(familia1);
 
         Endereco endereco1 = new Endereco(null, "05133-000", "Rua Arroio do Meio", 415, null, "Pirituba",
@@ -53,22 +53,22 @@ public class TestPacienteUtil {
         pessoa1.setTelefones(telefones1);
         pessoaRepository.save(pessoa1);
 
-        Paciente paciente1 = new Paciente();
-        paciente1.setCartaoDoSUS("705 0454 6634 8144");
-        paciente1.setPessoa(pessoa1);
-        paciente1.setPosicaoMembro(1);
-        pacienteRepository.save(paciente1);
+        HistoricoMedico historicoMedico1 = new HistoricoMedico();
+        historicoMedicoRepository.save(historicoMedico1);
 
         String prontuarioFake = "UBS.PQ.São.Domingos-001.001.001-01";
 
         Prontuario prontuario1 = new Prontuario();
-        prontuario1.setPaciente(paciente1);
         prontuario1.setNumeroProntuario(prontuarioFake);
+        prontuario1.setHistoricoMedico(historicoMedico1);
         prontuarioRepository.save(prontuario1);
 
-        HistoricoMedico historicoMedico1 = new HistoricoMedico();
-        historicoMedico1.setProntuario(prontuario1);
-        historicoMedicoRepository.save(historicoMedico1);
+        Paciente paciente1 = new Paciente();
+        paciente1.setCartaoDoSUS("705 0454 6634 8144");
+        paciente1.setPessoa(pessoa1);
+        paciente1.setPosicaoMembro(1);
+        paciente1.setProntuario(prontuario1);
+        pacienteRepository.save(paciente1);
 
         return paciente1;
     }

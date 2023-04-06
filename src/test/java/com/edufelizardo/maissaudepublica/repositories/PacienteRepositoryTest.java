@@ -268,9 +268,8 @@ class PacienteRepositoryTest {
     }
     private Familia criarFamilia() {
         familia = new Familia();
-        familia.setNumeroFamilia(1);
+        familia.setNumeroFamilia("001");
         familia.setResposavelFamilia(true);
-        familia.setArea(true);
         return familia;
     }
     private Endereco criarEndereco() {
