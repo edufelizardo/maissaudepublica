@@ -16,7 +16,7 @@ Este READER foi elaborado com o objetivo de fornecer uma visão geral do sistema
 * Gerenciamento de áreas de cobertura de atendimento médico
 * Integração com sistemas de informação hospitalar
 
-### Motivação para que fizecemos isso.
+### Motivação para que fizessemos isso.
 Este projeto foi inicialmente concebido como uma planilha desenvolvida pelos enfermeiros de uma unidade de saúde, com o objetivo de otimizar e melhorar seus processos. Minha esposa solicitou minha ajuda para tornar essa planilha mais eficiente e, assim, decidimos implementá-la utilizando o Visual Basic .NET e o Windows Forms para o frontend, e viria a se chamar **+MaisSaúdePMA**. Foi uma experiência fantástica, porém, devido a alguns contratempos, tive que parar o projeto por um tempo. Agora, estou retomando-o com novas implementações e utilizando as tecnologias mais atuais do momento.
 
 ## Tecnologias utilizadas
@@ -40,7 +40,7 @@ Este projeto foi inicialmente concebido como uma planilha desenvolvida pelos enf
 ## Licença
 Este projeto está sob a licença MIT. Consulte o arquivo LICENSE para mais informações.
 
-## Auto
+## Autor
 
 ***Eduardo Felizardo Cândido***
 

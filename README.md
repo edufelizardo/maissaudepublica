@@ -1,4 +1,3 @@
-# Mais Saúde Pública
 # MorePublicHealth
 ## Description
  The Public Health Management Project is a system that aims to computerize and optimize the management of patients' health information, in order to facilitate the work of healthcare professionals. For this, the system allows the creation of electronic medical records, registration of appointments, exams, medical prescriptions, treatments, and other relevant information.
@@ -21,8 +20,8 @@ This READER was developed with the aim of providing an overview of the system an
  This project was initially conceived as a spreadsheet developed by nurses in a health unit, with the aim of optimizing and improving their processes. My wife asked for my help in making this spreadsheet more efficient, and so we decided to implement it using Visual Basic .NET and Windows Forms for the frontend, and it would become **+MaisSaúdePMA**. It was a fantastic experience, but due to some setbacks, I had to stop the project for a while. Now, I am resuming it with new implementations and using the most current technologies of the moment.
 
 ## Technologies Used
-* Java Versão 17
-* Sprinf Boot
+* Java JDK 17
+* Spring Boot
 * Angular
 * Docker
 * Jenkins
