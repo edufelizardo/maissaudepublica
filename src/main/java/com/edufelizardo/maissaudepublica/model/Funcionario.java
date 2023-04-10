@@ -10,9 +10,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Funcionario implements Serializable {
@@ -42,7 +40,7 @@ public class Funcionario implements Serializable {
     private Funcao funcao;
     @OneToMany
     @JoinColumn(name = "funcionario_id")
-    private List<ProgramaDeSaude> programaDeSaudes = new ArrayList<>();
+    private Set<ProgramaDeSaude> programaDeSaudes = new HashSet<>();
 
     public Funcionario() {
     }
@@ -108,7 +106,7 @@ public class Funcionario implements Serializable {
         return funcao;
     }
 
-    public List<ProgramaDeSaude> getProgramaDeSaudes() {
+    public Set<ProgramaDeSaude> getProgramaDeSaudes() {
         return programaDeSaudes;
     }
 
@@ -152,7 +150,7 @@ public class Funcionario implements Serializable {
         this.funcao = funcao;
     }
 
-    public void setProgramaDeSaudes(List<ProgramaDeSaude> programaDeSaudes) {
+    public void setProgramaDeSaudes(Set<ProgramaDeSaude> programaDeSaudes) {
         this.programaDeSaudes = programaDeSaudes;
     }
 

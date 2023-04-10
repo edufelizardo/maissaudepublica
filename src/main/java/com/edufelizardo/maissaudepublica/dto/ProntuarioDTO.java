@@ -14,7 +14,6 @@ public class ProntuarioDTO implements Serializable {
     private static final long serialVersionUID = 6545513422259181802L;
     private Long prontuario_id;
     private String numeroProntuario;
-    private Paciente paciente;
     private HistoricoMedico historicoMedico;
 
     public ProntuarioDTO() {
@@ -23,7 +22,6 @@ public class ProntuarioDTO implements Serializable {
     public ProntuarioDTO(Prontuario prontuario) {
         this.prontuario_id = prontuario.getProntuario_id();
         this.numeroProntuario = prontuario.getNumeroProntuario();
-        this.paciente = prontuario.getPaciente();
         this.historicoMedico = prontuario.getHistoricoMedico();
     }
 
@@ -33,10 +31,6 @@ public class ProntuarioDTO implements Serializable {
 
     public String getNumeroProntuario() {
         return numeroProntuario;
-    }
-
-    public Paciente getPaciente() {
-        return paciente;
     }
 
     public HistoricoMedico getHistoricoMedico() {
@@ -49,10 +43,6 @@ public class ProntuarioDTO implements Serializable {
 
     public void setNumeroProntuario(String numeroProntuario) {
         this.numeroProntuario = numeroProntuario;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
     }
 
     public void setHistoricoMedico(HistoricoMedico historicoMedico) {

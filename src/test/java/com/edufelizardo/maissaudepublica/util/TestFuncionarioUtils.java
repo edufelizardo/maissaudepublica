@@ -12,7 +12,8 @@ import java.util.Set;
 public class TestFuncionarioUtils {
     public static Funcionario registraFuncionarioMedicoUm(EnderecoRepository enderecoRepository, PessoaRepository pessoaRepository,
                                                           EscalaDeTrabalhoRepository escalaDeTrabalhoRepository, FormacaoRepository formacaoRepository,
-                                                          DepartamentoRepository departamentoRepository, FuncaoRepository funcaoRepository) {
+                                                          DepartamentoRepository departamentoRepository, FuncaoRepository funcaoRepository,
+                                                          ProgramaDeSaudeRepository programaDeSaudeRepository) {
 
         Endereco endereco1 = new Endereco(null, "01001-000", "Praça da Sé", 1, null, "Sé",
                 "São Paulo", "SP", "3550308", "1004", "11", "7107", null, null);
@@ -40,12 +41,18 @@ public class TestFuncionarioUtils {
 
         Funcionario funcionario1 = new Funcionario(null, LocalDate.of(2018, 05,12), null, "CRM 12345", BigDecimal.valueOf(12000.00), pessoa1,
                 escalaTrabalho1, formacao1, departamento2, funcao1);
+        Set<ProgramaDeSaude> programaDeSaudes = new HashSet<>();
+        ProgramaDeSaude saudeDaFamilia = new ProgramaDeSaude(null, "Saúde da Família");
+        programaDeSaudes.add(saudeDaFamilia);
+        programaDeSaudeRepository.save(saudeDaFamilia);
+        funcionario1.setProgramaDeSaudes(programaDeSaudes);
 
         return funcionario1;
     }
     public static Funcionario registraFuncionarioEnfermeiroUm(EnderecoRepository enderecoRepository, PessoaRepository pessoaRepository,
                                                           EscalaDeTrabalhoRepository escalaDeTrabalhoRepository, FormacaoRepository formacaoRepository,
-                                                          DepartamentoRepository departamentoRepository, FuncaoRepository funcaoRepository) {
+                                                          DepartamentoRepository departamentoRepository, FuncaoRepository funcaoRepository,
+                                                              ProgramaDeSaudeRepository programaDeSaudeRepository) {
 
         Endereco endereco2 = new Endereco(null, "01002-000", "Praça Clóvis Beviláqua'", 1, null, "Sé",
                 "São Paulo", "SP", "3550308", "1004", "11", "7107", null, null);
@@ -73,6 +80,14 @@ public class TestFuncionarioUtils {
 
         Funcionario funcionario2 = new Funcionario(null, LocalDate.of(2019, 02, 20), null, "COREN 54321", BigDecimal.valueOf(8000.00), pessoa2,
                 escalaTrabalho1, formacao3,  departamento3, funcao2);
+        Set<ProgramaDeSaude> programaDeSaudes = new HashSet<>();
+        ProgramaDeSaude saudeHomem = new ProgramaDeSaude(null, "Saúde do Homem");
+        programaDeSaudes.add(saudeHomem);
+        programaDeSaudeRepository.save(saudeHomem);
+        ProgramaDeSaude saudeMulher = new ProgramaDeSaude(null, "Saúde da Mulher");
+        programaDeSaudes.add(saudeMulher);
+        programaDeSaudeRepository.save(saudeMulher);
+        funcionario2.setProgramaDeSaudes(programaDeSaudes);
         return funcionario2;
     }
     public static Funcionario registraFuncionarioEnfermeiroDois(EnderecoRepository enderecoRepository, PessoaRepository pessoaRepository,

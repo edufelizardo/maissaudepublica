@@ -21,9 +21,5 @@ public interface FuncionarioRepository extends CrudRepository<Funcionario, Long>
     List<Funcionario> findByFuncaoNomeFuncao(String nomeFuncao);
 
     List<Funcionario> findByDepartamentoNomeDoDepartamento(String nomeDoDepartamento);
-
-//    @Query("SELECT f FROM Funcionario f JOIN f.programaDeSaudes p WHERE p.nome = :nomePrograma")
-//    List<Funcionario> findByProgramaDeSaudeNomeProgramaDesaude(@Param("nomeProgramaDesaude") String nomeProgramaDesaude);
-
     List<Funcionario> findByEscalaTrabalhoNomeDoExpediente(String nomeDoExpediente);
 }

@@ -15,8 +15,6 @@ public class Prontuario implements Serializable {
     @Column(name = "prontuario_id", nullable = false)
     private Long prontuario_id;
     private String numeroProntuario;
-    @OneToOne(mappedBy = "prontuario")
-    private Paciente paciente;
     @OneToOne
     @JoinColumn(name = "prontuario_historico_id")
     private HistoricoMedico historicoMedico;
@@ -24,16 +22,14 @@ public class Prontuario implements Serializable {
     public Prontuario() {
     }
 
-    public Prontuario(Long prontuario_id, String numeroProntuario, Paciente paciente, HistoricoMedico historicoMedico) {
+    public Prontuario(Long prontuario_id, String numeroProntuario, HistoricoMedico historicoMedico) {
         this.prontuario_id = prontuario_id;
         this.numeroProntuario = numeroProntuario;
-        this.paciente = paciente;
         this.historicoMedico = historicoMedico;
     }
     public Prontuario(Prontuario prontuario) {
         this.prontuario_id = prontuario.getProntuario_id();
         this.numeroProntuario = prontuario.getNumeroProntuario();
-        this.paciente = prontuario.paciente;
         this.historicoMedico = prontuario.getHistoricoMedico();
     }
 
@@ -43,10 +39,6 @@ public class Prontuario implements Serializable {
 
     public String getNumeroProntuario() {
         return numeroProntuario;
-    }
-
-    public Paciente getPaciente() {
-        return paciente;
     }
 
     public HistoricoMedico getHistoricoMedico() {
@@ -61,10 +53,6 @@ public class Prontuario implements Serializable {
         this.numeroProntuario = numeroProntuario;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-
     public void setHistoricoMedico(HistoricoMedico historicoMedico) {
         this.historicoMedico = historicoMedico;
     }
@@ -74,7 +62,6 @@ public class Prontuario implements Serializable {
         return "Prontuario{" +
                 "prontuario_id=" + prontuario_id +
                 ", numeroProntuario='" + numeroProntuario + '\'' +
-                ", paciente=" + paciente +
                 ", historicoMedico=" + historicoMedico +
                 '}';
     }
