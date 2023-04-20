@@ -1,3 +1,6 @@
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=edufelizardo.visitor-maissaudepublica)
+ ![GitHub followers](https://img.shields.io/github/followers/edufelizardo1?style=social)
+
 # MorePublicHealth
 ## Description
  The Public Health Management Project is a system that aims to computerize and optimize the management of patients' health information, in order to facilitate the work of healthcare professionals. For this, the system allows the creation of electronic medical records, registration of appointments, exams, medical prescriptions, treatments, and other relevant information.
