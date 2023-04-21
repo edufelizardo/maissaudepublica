@@ -10,10 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @DataJpaTest
-@DisplayName("Testando Funcionarios")
+@DisplayName("Teste Funcionarios")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class FuncionarioRepositoryTest {
     @Autowired
@@ -318,5 +319,10 @@ class FuncionarioRepositoryTest {
             String json = objectMapper.writeValueAsString(funcionariosEncontrados);
             System.out.println(json);
         }
+    }
+
+    void testBuscarFuncionarioPorProgramaDeSaude() {
+        ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
+
     }
 }
