@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("programas")
-public class ProgramaDeSaudeControler {
+public class ProgramaDeSaudeController {
     @Autowired
     private ProgramaDeSaudeService programaDeSaudeService;
     @GetMapping
