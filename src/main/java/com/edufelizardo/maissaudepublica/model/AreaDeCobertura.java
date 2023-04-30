@@ -23,11 +23,6 @@ public class AreaDeCobertura implements Serializable {
     public AreaDeCobertura() {
     }
 
-    public AreaDeCobertura(Long area_id, int area) {
-        this.area_id = area_id;
-        this.area = area;
-    }
-
     public AreaDeCobertura(Long area_id, int area, List<Subarea> subareas) {
         this.area_id = area_id;
         this.area = area;
